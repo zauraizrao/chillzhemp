@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chillz Hemp – Contact</title>
+  <link rel="stylesheet" href="./assets/styles.css" />
+</head>
+
+<body class="contactPage">
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <div class="topbar__left">FREE SHIPPING ON ALL U.S. ORDERS OVER $75</div>
+      <div class="topbar__right">NEED HELP? SUPPORT@YOURSTORE.COM</div>
+    </div>
+  </div>
+
+  <!-- GLASS HEADER (same style as products) -->
+  <header class="pHeader">
+    <div class="container pHeader__inner">
+      <a class="pHeader__brand" href="./index.html" aria-label="Go home">
+        <img src="./assets/images/Chillz-Logo-768x368.png" alt="Chillz Logo" />
+      </a>
+
+      <nav class="pHeader__nav" aria-label="Primary navigation">
+        <a href="./index.html">Home</a>
+        <a href="./products.html">Products</a>
+        <a href="./coas.html">Lab Reports</a>
+        <a href="./contact.html" class="is-active">Contact</a>
+      </nav>
+
+      <div class="pHeader__tools">
+        <a class="cPillLink" href="mailto:support@yourstore.com">support@yourstore.com</a>
+
+        <button class="pMenuBtn" id="pMenuBtn" type="button" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- mobile drawer -->
+    <div class="pDrawer" id="pDrawer" aria-hidden="true">
+      <div class="pDrawer__panel">
+        <a href="./index.html">Home</a>
+        <a href="./products.html">Products</a>
+        <a href="./coas.html">Lab Reports</a>
+        <a href="./contact.html" class="is-active">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="cHero">
+    <div class="container cHero__inner">
+      <div class="cHero__copy">
+        <div class="cPill">CONTACT</div>
+        <h1 class="cHero__title">Let’s Talk 👋</h1>
+        <p class="cHero__sub">
+          Send a message and our team will get back to you. Clean form, premium UI, mobile-first.
+        </p>
+
+       
+      </div>
+
+      <!-- FORM CARD -->
+      <div class="cFormCard">
+        <div class="cFormCard__head">
+          <div class="cFormCard__tag">FAST RESPONSE</div>
+          <div class="cFormCard__title">Send a Message</div>
+          <div class="cFormCard__sub">We’ll reply within 24–48 hours.</div>
+        </div>
+
+        <form class="cForm" action="#" method="post">
+          <div class="cGrid2">
+            <label class="cField">
+              <span>Name</span>
+              <input type="text" name="name" placeholder="Your name" required />
+            </label>
+
+            <label class="cField">
+              <span>Email</span>
+              <input type="email" name="email" placeholder="your@email.com" required />
+            </label>
+          </div>
+
+          <label class="cField">
+            <span>Phone Number</span>
+            <input type="tel" name="phone" placeholder="+1 234 567 890" />
+          </label>
+
+          <label class="cField">
+            <span>Message</span>
+            <textarea name="message" rows="5" placeholder="Tell us what you need..." required></textarea>
+          </label>
+
+          <button class="cSubmit" type="submit">
+            Send Message <span class="cArrow">→</span>
+          </button>
+
+          <div class="cFinePrint">
+            By sending, you agree to be contacted back via email/phone.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER (reuse yours) -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__col">
+        <div class="footer__brand">
+          <img class="footer__logo" src="./assets/images/Chillz-Logo-768x368.png" alt="Footer logo" />
+        </div>
+        <p class="footer__small">Chillz Hemp Premium Hemp Products Collection</p>
+        <div class="footer__small">Email: support@yourstore.com</div>
+      </div>
+
+      <div class="footer__col">
+        <h5>POLICIES</h5>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms and Conditions</a>
+        <a href="#">Shipping Policy</a>
+        <a href="#">Returns &amp; Refund Policy</a>
+      </div>
+
+      <div class="footer__col">
+        <h5>QUICKLINKS</h5>
+        <a href="./index.html">About Us</a>
+        <a href="./contact.html">Contact Us</a>
+        <a href="./coas.html">Lab Reports</a>
+        <a href="./products.html">All Products</a>
+      </div>
+
+      <div class="footer__col">
+        <h5>Signup</h5>
+        <p class="footer__small">Subscribe to our newsletter for updates.</p>
+        <form class="footer__form" action="#" method="post">
+          <input type="email" name="email" placeholder="Email" required />
+          <button class="btn btn--ghost" type="submit">Sign up</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container footer__bottomInner">
+        <span>© 2026 All Rights Reserved</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./assets/main.js"></script>
+</body>
+</html>
