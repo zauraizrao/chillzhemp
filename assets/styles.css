@@ -913,7 +913,7 @@ background: linear-gradient(
   position: relative;
   padding: 64px 0;
   overflow:hidden;
-
+display: none;
   /* Neon-friendly background that still works on any theme */
   background:
     radial-gradient(900px 450px at 15% 10%, rgba(255, 98, 193, .28), transparent 60%),
@@ -2223,5 +2223,95 @@ background: linear-gradient(
   .showcard__img{
     aspect-ratio: 1 / 1;
     object-fit: contain;
+  }
+}
+/* ======================================================
+   MOBILE CAROUSEL — PINK PROMO JARS (promo__imgRow)
+   ====================================================== */
+@media (max-width: 768px){
+
+  /* allow scroll */
+  .promo__left,
+  .promo__imgRow{
+    overflow: visible !important;
+  }
+
+  .promo__imgRow{
+    display: flex !important;
+    flex-wrap: nowrap !important;
+
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+
+    gap: 14px !important;
+    padding: 6px 6px 14px !important;
+
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+
+    touch-action: pan-x;
+    overscroll-behavior-x: contain;
+  }
+
+  .promo__imgRow::-webkit-scrollbar{ display:none; }
+  .promo__imgRow{ scrollbar-width:none; }
+
+  /* each jar becomes a slide */
+  .promo__jar{
+    flex: 0 0 70% !important;       /* slide width */
+    min-width: 70% !important;      /* forces overflow => scroll works */
+    max-width: 70% !important;
+
+    scroll-snap-align: start;
+    height: auto !important;
+
+    /* prevent huge images */
+    max-height: 260px !important;
+    object-fit: contain !important;
+  }
+
+  /* OPTIONAL: make promo layout stack cleaner */
+  .promo__inner{
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+
+  .promo__right{
+    text-align: left !important;
+    padding-top: 0 !important;
+  }
+}
+
+/* ======================================================
+   MOBILE HERO BANNER FIX (NO CROP ON ANY DEVICE)
+   ====================================================== */
+@media (max-width: 768px){
+
+  .hero{
+    position: relative;
+  }
+
+  /* Give hero a stable height on mobile */
+  .hero__bg{
+    min-height: 260px !important;
+    height: 42vh !important;        /* responsive height */
+    max-height: 520px !important;
+    background: #0b0f18;            /* fallback behind image */
+    overflow: hidden;
+  }
+
+  /* IMPORTANT: make the banner fully visible */
+  .hero__bgImg{
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;    /* <-- THIS STOPS CROPPING */
+    object-position: center center !important;
+    display: block;
+  }
+
+  /* Optional: reduce the bottom angled line spacing */
+  .hero__angle{
+    margin-top: -1px;
   }
 }
