@@ -204,11 +204,11 @@ img{ max-width:100%; display:block; }
   /* FIX: remove big vertical padding that creates band space */
   padding: 0;
 
-  background: rgba(0,0,0,0.35);
+  /* background: rgba(0,0,0,0.35);
   backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px); */
 
-  border-bottom: 1px solid rgba(255,255,255,0.12);
+  /* border-bottom: 1px solid rgba(255,255,255,0.12); */
   transition: background .3s ease;
 }
 
