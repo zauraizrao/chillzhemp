@@ -5,9 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Chillz Hemp – Home</title>
   <link rel="stylesheet" href="./assets/styles.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
 </head>
 
 <body>
+  <script>
+  AOS.init();
+</script>
   <!-- TOP THIN BAR -->
   <div class="topbar">
     <div class="container topbar__inner">
@@ -59,14 +65,19 @@
 
   <!-- BEST SELLER -->
   <section class="section section--white">
-    <div class="container">
-      <h2 class="section__title">BEST SELLER</h2>
-      <p class="section__subtitle">Unlock Everyday Ease with Unique Finds Designed to Elevate Your Routine.</p>
+    <div data-aos="fade-left"
+     data-aos-anchor="#example-anchor"
+     data-aos-offset="1000"
+     data-aos-duration="1000"  class="container">
+      <h2 data-aos="fade-up"
+     data-aos-anchor-placement="center-bottom" data-aos-duration="1000" class="section__title">BEST SELLER</h2>
+      <p data-aos="fade-up"
+     data-aos-anchor-placement="center-bottom" data-aos-duration="1000" class="section__subtitle">Unlock Everyday Ease with Unique Finds Designed to Elevate Your Routine.</p>
 
-      <div class="grid grid--bestsellers">
+      <div  class="grid grid--bestsellers">
         <!-- Card 1 -->
-        <article class="card">
-          <div class="card__imgWrap">
+        <article  class="card">
+          <div  class="card__imgWrap">
             <img class="card__img" src="./assets/images/Chillz Flower Jar Hybrid.png" alt="Product placeholder" />
           </div>
           <h3 class="card__title"> FLOWER Jar 30 Count 1 Gram </h3>
@@ -133,7 +144,7 @@
   <!-- PINK PROMO (jar) -->
   <section class="section section--pink promo">
     <div class="container promo__inner">
-      <div class="promo__left">
+      <div data-aos-duration="1200"data-aos="zoom-in-down" class="promo__left">
         <div class="promo__imgRow">
           <img class="promo__jar" src="./assets/images/Chillz PreRoll Jar Hybrid.png" alt="Jar placeholder" />
           <img class="promo__jar" src="./assets/images/Chillz PreRoll Jar Indica.png" alt="Jar placeholder" />
@@ -190,7 +201,7 @@
       </div>
 
       <div class="feature__media">
-        <div class="feature__mediaWrap">
+        <div data-aos-duration="1200"data-aos="zoom-in-down" class="feature__mediaWrap">
           <img class="feature__img"
                src="./assets/images/50 ct PreRolls All.png"
                alt="Feature image placeholder" />
@@ -220,16 +231,16 @@
       <div class="kicker">Hybrid, Indica, Sativa Gummies</div>
       <h3 class="gummies__title">Explore Chillz Gummies Fun Pack</h3>
 
-      <div class="grid grid--two">
-        <article class="bigCard">
-          <div class="bigCard__img">
+      <div  class="grid grid--two">
+        <article data-aos="zoom-in-right" data-aos-duration="1200" class="bigCard">
+          <div  class="bigCard__img">
             <img src="./assets/images/Chillz Gummies Fun Pack Box.png" alt="Product placeholder" />
           </div>
           <h4 class="bigCard__title">Chillz Gummie Fun Pack 50 Count 100mg</h4>
           <div class="price">Hybrid</div>
         </article>
 
-        <article class="bigCard">
+        <article data-aos="zoom-in-right" data-aos-duration="1200" class="bigCard">
           <div class="bigCard__img">
             <img src="./assets/images/Chillz Gummies Fun Pack.png" alt="Product placeholder" />
           </div>
@@ -262,7 +273,7 @@
     <div class="container">
       <h3 class="section__title section__title--small">Explore PreRolls Pouches</h3>
 
-      <div class="grid grid--new">
+      <div data-aos="zoom-out" data-aos-duration="1500" class="grid grid--new">
         <article class="card">
           <div class="card__imgWrap"><img class="card__img" src="./assets/images/Chillz PreRoll Pouch Hybrid.png" alt="Product placeholder" /></div>
           <h3 class="card__title">Chillz PreRolls Pouch</h3>
@@ -281,11 +292,11 @@
           <div class="card__meta"><span class="price">2x2 Gram Sativa</span></div>
         </article>
 
-        <!-- <article class="card">
-          <div class="card__imgWrap"><img class="card__img" src="./assets/images/50 ct PreRolls Hybrid.png" alt="Product placeholder" /></div>
+        <article class="card">
+          <div class="card__imgWrap"><img class="card__img" src="./assets/images/50 ct PreRolls All.png" alt="Product placeholder" /></div>
           <h3 class="card__title">Chillz PreRolls Box</h3>
           <div class="card__meta"><span class="price">50 Count Box All</span></div>
-        </article> -->
+        </article>
       </div>
     </div>
   </section>
@@ -299,7 +310,7 @@
       </p>
     </div>
 
-    <div class="showcase__grid">
+    <div data-aos="zoom-out-left" data-aos-duration="1500" class="showcase__grid">
       <!-- Product 1 -->
       <article class="showcard">
         <div class="showcard__top">
@@ -401,7 +412,9 @@
 
   <!-- FEATURED PRODUCTS (RED BLOCK) -->
   <section class="section section--red featured">
-    <div class="container">
+    <div data-aos="fade-down"
+     data-aos-easing="linear"
+     data-aos-duration="1500" class="container">
       <h3 class="featured__title">Explore Chillz Donuts Collection</h3>
 
       <div class="grid grid--featured">
