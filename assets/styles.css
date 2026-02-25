@@ -2315,3 +2315,36 @@ background: linear-gradient(
     margin-top: -1px;
   }
 }
+
+
+/* Desktop: 3-column */
+.grid--new{
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 26px !important;
+}
+
+/* Mobile: swipe carousel */
+@media (max-width: 768px){
+  .grid--new{
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    gap: 14px !important;
+    padding: 2px 6px 12px !important;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+  }
+
+  .grid--new > *{
+    flex: 0 0 78% !important;
+    min-width: 78% !important;
+    max-width: 78% !important;
+    scroll-snap-align: start;
+  }
+
+  .grid--new::-webkit-scrollbar{ display:none; }
+  .grid--new{ scrollbar-width:none; }
+}
