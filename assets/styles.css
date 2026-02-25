@@ -913,7 +913,7 @@ background: linear-gradient(
   position: relative;
   padding: 64px 0;
   overflow:hidden;
-display: none;
+
   /* Neon-friendly background that still works on any theme */
   background:
     radial-gradient(900px 450px at 15% 10%, rgba(255, 98, 193, .28), transparent 60%),
