@@ -77,7 +77,7 @@ img{ max-width:100%; display:block; }
 .section--white{ background:#fff; }
 .section--pink{ background: var(--c-pink); }
 .section--purple{ background: var(--c-purple); }
-.section--yellow{ background: var(--c-yellow); }
+.section--yellow{background: var(--c-yellow);display: none;}
 .section--red{ background: var(--c-red2); }
 .section--green{ background: var(--c-green); }
 
@@ -107,7 +107,7 @@ img{ max-width:100%; display:block; }
 }
 .angle--pink{ background: var(--c-pink); }
 .angle--purple{ background: var(--c-purple); }
-.angle--yellow{ background: var(--c-yellow); }
+.angle--yellow{background: var(--c-yellow);display: none;}
 
 /* =========================================================
    TOPBAR
@@ -169,17 +169,15 @@ img{ max-width:100%; display:block; }
   left:-2%;
   right:-2%;
   bottom:-1px;
-
   height: 34px;
-  z-index: 60;
-
+  display: none;
+  display: n;
   background: linear-gradient(
     90deg,
     var(--c-red) 0%,
     var(--c-red2) 55%,
     var(--c-red) 100%
   );
-
   transform: skewY(-3deg);
   transform-origin: left bottom;
   filter: drop-shadow(0 8px 10px rgba(0,0,0,.12));
@@ -187,6 +185,7 @@ img{ max-width:100%; display:block; }
 
 .hero__angle::after{
   content:"";
+  display: none;
   position:absolute;
   inset: 8px 0 0 0;
   height: 14px;
@@ -584,6 +583,7 @@ background: linear-gradient(
   background: var(--c-red);
   color:#fff;
   font-size: 10px;
+  display: none;
   letter-spacing: .7px;
   font-weight: 900;
   text-transform: uppercase;
@@ -2139,4 +2139,89 @@ background: linear-gradient(
   .cHero{ padding: 38px 0 54px; }
   .cFormCard{ padding: 14px; border-radius: 22px; }
   .cInfoCard{ border-radius: 16px; }
+}
+
+/* ======================================================
+   MOBILE SWIPE CAROUSELS (PUT THIS AT VERY END OF CSS)
+   ====================================================== */
+@media (max-width: 768px){
+
+  /* IMPORTANT: allow horizontal scroll */
+  .section,
+  .container{
+    overflow: visible !important;
+  }
+
+  /* Turn these grids into horizontal swipe rows */
+  .grid--bestsellers,
+  .grid--new,
+  .grid--featured,
+  .grid--two,
+  .showcase__grid{
+    display: flex !important;
+    flex-wrap: nowrap !important;
+
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+
+    gap: 14px !important;
+    padding: 2px 6px 12px !important;
+
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+
+    /* helps Android touch scrolling */
+    touch-action: pan-x;
+    overscroll-behavior-x: contain;
+
+    /* remove any grid leftovers */
+    grid-template-columns: unset !important;
+  }
+
+  /* Hide scrollbar (clean look) */
+  .grid--bestsellers::-webkit-scrollbar,
+  .grid--new::-webkit-scrollbar,
+  .grid--featured::-webkit-scrollbar,
+  .grid--two::-webkit-scrollbar,
+  .showcase__grid::-webkit-scrollbar{
+    display: none;
+  }
+  .grid--bestsellers,
+  .grid--new,
+  .grid--featured,
+  .grid--two,
+  .showcase__grid{
+    scrollbar-width: none;
+  }
+
+  /* Each card becomes a “slide” */
+  .grid--bestsellers > *,
+  .grid--new > *,
+  .grid--featured > *,
+  .grid--two > *,
+  .showcase__grid > *{
+    flex: 0 0 78% !important;   /* slide width */
+    min-width: 78% !important;  /* force overflow so scroll works */
+    max-width: 78% !important;
+
+    scroll-snap-align: start;
+  }
+
+  /* Fix your special narrow cards (they break carousel sizing) */
+  .card--narrow{
+    flex: 0 0 78% !important;
+    min-width: 78% !important;
+    max-width: 78% !important;
+  }
+
+  /* Make it tighter + cleaner on mobile */
+  .section{ padding: 38px 0 !important; }
+
+  /* Optional: slightly smaller images so they don’t feel huge */
+  .card__img,
+  .bigCard__img img,
+  .showcard__img{
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+  }
 }
