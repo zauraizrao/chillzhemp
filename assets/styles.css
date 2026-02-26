@@ -1303,3 +1303,57 @@ button{ font-family:inherit; }
     height: 26px !important;
   } */
 }
+
+
+/* ===========================
+   FORCE HERO FULL WIDTH FILL
+   =========================== */
+
+/* Remove any container width restriction */
+.hero .container,
+.hero__content .container {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 0 !important;
+}
+
+/* Make hero full viewport height */
+.hero {
+  min-height: 100vh !important;
+  height: 100vh !important;
+  padding: 0 !important;
+}
+
+/* Remove side backgrounds */
+.hero__bg {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* THIS is the important line */
+.hero__bgImg {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;   /* FILL ENTIRE SCREEN */
+  object-position: center center !important;
+  display: block;
+}
+
+/* Remove that empty gradient block under image */
+.hero__angle {
+  display: none !important;
+}
+
+/* Mobile – still full fill */
+@media (max-width: 768px) {
+  .hero {
+    height: 100vh !important;
+    min-height: 100vh !important;
+  }
+
+  .hero__bgImg {
+    object-fit: cover !important;
+  }
+}
