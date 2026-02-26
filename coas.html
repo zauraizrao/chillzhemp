@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lab Reports | Chillz Hemp</title>
+
+  <style>
+    :root{
+      --bg:#070914;
+      --text:#ffffff;
+
+      --glass:rgba(255,255,255,.10);
+      --stroke:rgba(255,255,255,.18);
+
+      --shadow: 0 18px 45px rgba(0,0,0,.35);
+      --radius: 22px;
+      --radius2: 16px;
+
+      --container: min(1180px, calc(100% - 40px));
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background: radial-gradient(1200px 800px at 20% -10%, rgba(255,79,216,.28), transparent 60%),
+                  radial-gradient(1100px 900px at 100% 0%, rgba(79,140,255,.22), transparent 55%),
+                  radial-gradient(900px 700px at 70% 90%, rgba(255,122,69,.14), transparent 55%),
+                  var(--bg);
+      overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{width:var(--container);margin-inline:auto}
+
+    /* =========================
+       HERO + NAV (your markup)
+    ========================== */
+    .hero{position:relative; min-height: 380px;}
+    .hero__bg{position:absolute; inset:0; overflow:hidden;}
+    .hero__bgImg{
+      width:100%; height:100%;
+      object-fit:cover;
+      filter:saturate(1.05) contrast(1.05);
+      transform:scale(1.02);
+    }
+    .hero::after{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        linear-gradient(180deg, rgba(7,9,20,.65) 0%, rgba(7,9,20,.35) 35%, rgba(7,9,20,.85) 100%),
+        radial-gradient(900px 380px at 20% 20%, rgba(255,79,216,.35), transparent 55%),
+        radial-gradient(800px 360px at 80% 10%, rgba(79,140,255,.25), transparent 55%);
+      pointer-events:none;
+    }
+
+    .hero__content{position:relative; z-index:2}
+    .navBar{
+      position:sticky; top:0; z-index:30;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(180deg, rgba(10,12,30,.75), rgba(10,12,30,.35));
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+    .navBar__inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 14px 0;
+      gap:16px;
+    }
+    .brand{display:flex; align-items:center; gap:12px}
+    .brand__logo{height:44px; width:auto; filter: drop-shadow(0 8px 18px rgba(0,0,0,.45));}
+
+    .nav__links{
+      display:flex; gap:22px; align-items:center;
+      font-weight: 800;
+      letter-spacing: .4px;
+      text-transform: uppercase;
+      font-size: 13px;
+      white-space:nowrap;
+    }
+    .nav__links a{
+      opacity:.9;
+      padding:10px 10px;
+      border-radius: 999px;
+      transition: transform .2s ease, background .2s ease, opacity .2s ease;
+    }
+    .nav__links a:hover{
+      background: rgba(255,255,255,.08);
+      transform: translateY(-1px);
+      opacity:1;
+    }
+
+    .nav__toggle{
+      display:none;
+      width:44px; height:44px;
+      border-radius: 12px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+      backdrop-filter: blur(10px);
+      cursor:pointer;
+    }
+    .nav__toggle span{
+      display:block;
+      width:22px; height:2px;
+      background:#fff;
+      margin:5px auto;
+      border-radius:999px;
+      opacity:.9;
+    }
+
+    .hero__angle{
+      position:absolute; left:0; right:0; bottom:-1px;
+      height:70px;
+      background: linear-gradient(90deg, rgba(255,79,216,.95), rgba(168,85,247,.95), rgba(79,140,255,.95));
+      clip-path: polygon(0 45%, 100% 0, 100% 100%, 0 100%);
+      filter: drop-shadow(0 16px 30px rgba(0,0,0,.45));
+      z-index:2;
+    }
+
+    .heroTitleWrap{position:relative; z-index:2; padding: 84px 0 46px;}
+    .heroTitle{width:var(--container); margin-inline:auto; padding-top: 10px;}
+    .kicker{
+      font-weight: 900; letter-spacing: .18em; text-transform: uppercase;
+      color: rgba(255,255,255,.78);
+      font-size: 12px; margin:0 0 10px;
+    }
+    .h1{
+      margin:0;
+      font-size: clamp(32px, 4vw, 54px);
+      line-height:1.05;
+      font-weight: 950;
+      text-shadow: 0 18px 45px rgba(0,0,0,.4);
+    }
+    .sub{
+      margin: 14px 0 0;
+      max-width: 62ch;
+      color: rgba(255,255,255,.82);
+      font-weight: 600;
+      line-height: 1.55;
+    }
+
+    /* =========================
+       COA SECTION
+    ========================== */
+    main{position:relative; z-index:3}
+    .coaWrap{padding: 54px 0 70px;}
+
+    .coaCard{
+      background: linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .coaCard__top{padding: 18px 18px 0;}
+    .coaCard__topInner{
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
+      padding: 14px 14px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.14);
+      background:
+        radial-gradient(900px 250px at 10% 30%, rgba(255,79,216,.25), transparent 60%),
+        radial-gradient(700px 220px at 80% 0%, rgba(79,140,255,.22), transparent 55%),
+        rgba(255,255,255,.06);
+    }
+    .coaCard__title{display:flex; flex-direction:column; gap:6px;}
+    .coaCard__title h2{margin:0; font-size:18px; letter-spacing:.02em; font-weight:950;}
+    .coaCard__title p{margin:0; color: rgba(255,255,255,.74); font-weight:600; font-size:13px; line-height:1.45;}
+
+    /* Tabs */
+    .tabs{padding: 16px 18px 18px;}
+    .tablist{
+      display:flex; gap:10px; flex-wrap:wrap;
+      padding: 10px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+    }
+    .tabBtn{
+      appearance:none; border:none; cursor:pointer; color:#fff;
+      font-weight: 950; letter-spacing:.06em; text-transform: uppercase;
+      font-size: 12px;
+      padding: 12px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+    }
+    .tabBtn:hover{transform: translateY(-1px)}
+    .tabBtn[aria-selected="true"]{
+      background: linear-gradient(90deg, rgba(255,79,216,.85), rgba(168,85,247,.85), rgba(79,140,255,.85));
+      border-color: rgba(255,255,255,.25);
+      box-shadow: 0 14px 35px rgba(0,0,0,.28);
+    }
+
+    /* Panels */
+    .panel{display:none; margin-top: 16px;}
+    .panel.is-active{display:block}
+
+    /* Desktop Grid (3 columns x 3 rows = 9) */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      padding: 6px;
+    }
+
+    /* Card */
+    .coaItem{
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: linear-gradient(135deg, rgba(255,255,255,.11), rgba(255,255,255,.05));
+      overflow:hidden;
+      box-shadow: 0 12px 30px rgba(0,0,0,.25);
+      transition: transform .18s ease, border-color .18s ease;
+      min-height: 100%;
+      display:flex;
+      flex-direction:column;
+      cursor:pointer; /* so it feels clickable even before links */
+    }
+    .coaItem:hover{
+      transform: translateY(-3px);
+      border-color: rgba(255,255,255,.26);
+    }
+    .coaItem__media{
+      position:relative;
+      aspect-ratio: 16/10;
+      background:
+        radial-gradient(700px 160px at 20% 0%, rgba(255,79,216,.25), transparent 60%),
+        radial-gradient(700px 180px at 90% 10%, rgba(79,140,255,.20), transparent 60%),
+        rgba(255,255,255,.04);
+    }
+    .coaItem__media img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      opacity:.92;
+    }
+    .coaItem__badge{
+      position:absolute;
+      left:12px; top:12px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(0,0,0,.35);
+      border: 1px solid rgba(255,255,255,.18);
+      backdrop-filter: blur(10px);
+      font-weight: 950;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: 11px;
+    }
+    .coaItem__body{
+      padding: 14px 14px 16px;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      flex:1;
+    }
+    .coaItem__body h3{
+      margin:0;
+      font-size: 14px;
+      font-weight: 950;
+      letter-spacing:.02em;
+    }
+    .coaItem__body p{
+      margin:0;
+      color: rgba(255,255,255,.74);
+      font-weight: 650;
+      font-size: 12.5px;
+      line-height:1.45;
+    }
+    .miniMeta{
+      margin-top:auto;
+      font-size: 11px;
+      font-weight: 850;
+      opacity:.8;
+      letter-spacing:.02em;
+    }
+
+    /* =========================
+       MOBILE: carousel per tab
+    ========================== */
+    .carouselControls{
+      display:none;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin: 10px 6px 0;
+    }
+    .carBtn{
+      width:44px;
+      height:44px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.06);
+      backdrop-filter: blur(10px);
+      cursor:pointer;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      transition: transform .18s ease, background .18s ease;
+      color:#fff;
+      font-weight:900;
+      font-size:16px;
+    }
+    .carBtn:hover{transform: translateY(-1px); background: rgba(255,255,255,.10)}
+    .carHint{
+      color: rgba(255,255,255,.78);
+      font-weight: 750;
+      font-size: 12px;
+      letter-spacing:.02em;
+      text-align:center;
+      flex:1;
+    }
+
+    @media (max-width: 980px){
+      .grid{grid-template-columns: repeat(2, 1fr);}
+      .hero{min-height: 340px;}
+    }
+
+    @media (max-width: 760px){
+      .nav__links{display:none}
+      .nav__toggle{display:block}
+      .heroTitleWrap{padding: 70px 0 40px;}
+
+      /* carousel */
+      .grid{
+        display:flex;
+        gap: 14px;
+        overflow-x:auto;
+        padding: 6px 6px 14px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+      }
+      .grid::-webkit-scrollbar{height:10px}
+      .grid::-webkit-scrollbar-thumb{background: rgba(255,255,255,.15); border-radius:999px}
+      .coaItem{
+        min-width: 82%;
+        scroll-snap-align: center;
+      }
+      .carouselControls{display:flex;}
+    }
+
+    @media (max-width: 420px){
+      .coaItem{min-width: 88%;}
+      .brand__logo{height:40px}
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== HERO HEADER (YOUR MARKUP) ===== -->
+  <header class="hero">
+    <div class="hero__bg">
+      <img class="hero__bgImg" src="./assets/images/Banner 1.jpeg" alt="Hero banner placeholder" />
+    </div>
+
+    <div class="hero__content">
+      <div class="navBar">
+        <div class="container navBar__inner">
+
+          <a class="brand" href="./index.html">
+            <img class="brand__logo"
+                 src="./assets/images/Chillz-Logo-768x368.png"
+                 alt="Chillz Logo" />
+          </a>
+
+          <nav class="nav__links" aria-label="Primary">
+    
+            <a href="./coas.html">LAB REPORTS</a>
+            <a href="./contact.html">CONTACT US</a>
+            <a href="./disclaimer.html">Disclaimer</a>
+          </nav>
+
+          <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="heroTitleWrap">
+      <div class="heroTitle">
+        <p class="kicker">Premium Hemp Product</p>
+        <h1 class="h1">Lab Reports (COAs)</h1>
+        <p class="sub">
+          Browse official Certificates of Analysis by category. On mobile, swipe through the carousel.
+        </p>
+      </div>
+    </div>
+
+    <div class="hero__angle"></div>
+  </header>
+
+  <main>
+    <section class="coaWrap">
+      <div class="container">
+
+        <div class="coaCard">
+          <!-- <div class="coaCard__top">
+            <div class="coaCard__topInner">
+              <div class="coaCard__title">
+                <h2>Find Your COA Fast</h2>
+                <p>Switch tabs to view reports. Replace placeholders with your images.</p>
+              </div>
+              <div style="text-align:right; font-weight:900; opacity:.85; font-size:12px; letter-spacing:.12em; text-transform:uppercase;">
+                COA Library
+              </div>
+            </div>
+          </div> -->
+
+          <div class="tabs">
+            <div class="tablist" role="tablist" aria-label="COA Categories">
+              <button class="tabBtn" role="tab" id="tab-prerolls" aria-controls="panel-prerolls" aria-selected="true" tabindex="0">
+                PreRolls
+              </button>
+              <button class="tabBtn" role="tab" id="tab-gummies" aria-controls="panel-gummies" aria-selected="false" tabindex="-1">
+                Gummies
+              </button>
+              <button class="tabBtn" role="tab" id="tab-flowers" aria-controls="panel-flowers" aria-selected="false" tabindex="-1">
+                Flowers
+              </button>
+              <button class="tabBtn" role="tab" id="tab-donuts" aria-controls="panel-donuts" aria-selected="false" tabindex="-1">
+                Donuts
+              </button>
+            </div>
+
+            <!-- PRE-ROLLS -->
+            <div class="panel is-active" role="tabpanel" id="panel-prerolls" aria-labelledby="tab-prerolls">
+              <div class="carouselControls">
+                <button class="carBtn" type="button" data-carousel="prev" aria-label="Previous report">&#8592;</button>
+                <div class="carHint">Swipe / scroll for more</div>
+                <button class="carBtn" type="button" data-carousel="next" aria-label="Next report">&#8594;</button>
+              </div>
+
+              <div class="grid" data-grid>
+                <!-- 9 items (3 columns x 3 rows desktop) -->
+                <article class="coaItem">
+                  <div class="coaItem__media">
+                    <span class="coaItem__badge">COA</span>
+                    <img src="./assets/images/Chillz Pre Lab 1.jpeg" alt="PreRoll COA 1">
+                  </div>
+                </article>
+
+                <article class="coaItem">
+                  <div class="coaItem__media">
+                    <span class="coaItem__badge">COA</span>
+                    <img src="./assets/images/Chillz Pre Lab 2.jpeg" alt="PreRoll COA 2">
+                  </div>
+              
+                </article>
+
+                <article class="coaItem">
+                  <div class="coaItem__media">
+                    <span class="coaItem__badge">COA</span>
+                    <img src="./assets/images/Chillz Pre Lab 3.jpeg" alt="PreRoll COA 3">
+                  </div>
+             
+                </article>
+
+                <article class="coaItem">
+                  <div class="coaItem__media">
+                    <span class="coaItem__badge">COA</span>
+                    <img src="./assets/images/Chillz Pre Lab 4.jpeg" alt="PreRoll COA 4">
+                  </div>
+              
+                </article>
+
+                <article class="coaItem">
+                  <div class="coaItem__media">
+                    <span class="coaItem__badge">COA</span>
+                    <img src="./assets/images/Chillz Pre Lab 5.jpeg" alt="PreRoll COA 5">
+                  </div>
+           
+                </article>
+
+                <article class="coaItem">
+                  <div class="coaItem__media">
+                    <span class="coaItem__badge">COA</span>
+                    <img src="./assets/images/Chillz Pre Lab 6.jpeg" alt="PreRoll COA 6">
+                  </div>
+               
+                </article>
+
+                <article class="coaItem">
+                  <div class="coaItem__media">
+                    <span class="coaItem__badge">COA</span>
+                    <img src="./assets/images/Chillz Pre Lab 7.jpeg" alt="PreRoll COA 7">
+                  </div>
+               
+                </article>
+
+                <article class="coaItem">
+                  <div class="coaItem__media">
+                    <span class="coaItem__badge">COA</span>
+                    <img src="./assets/images/Chillz Pre Lab 8.jpeg" alt="PreRoll COA 8">
+                  </div>
+               
+                </article>
+
+                <article class="coaItem">
+                  <div class="coaItem__media">
+                    <span class="coaItem__badge">COA</span>
+                    <img src="./assets/images/Chillz Pre Lab 9.jpeg" alt="PreRoll COA 9">
+                  </div>
+               
+                </article>
+              </div>
+            </div>
+
+            <!-- GUMMIES -->
+            <div class="panel" role="tabpanel" id="panel-gummies" aria-labelledby="tab-gummies">
+              <div class="carouselControls">
+                <button class="carBtn" type="button" data-carousel="prev" aria-label="Previous report">&#8592;</button>
+                <div class="carHint">Swipe / scroll for more</div>
+                <button class="carBtn" type="button" data-carousel="next" aria-label="Next report">&#8594;</button>
+              </div>
+
+              <div class="grid" data-grid>
+                <article class="coaItem">
+                  <div class="coaItem__media"><span class="coaItem__badge">COA</span><img src="./assets/images/Gummies Lab Reports.jpg" alt="Gummy COA 1"></div>
+                  <!-- <div class="coaItem__body"><h3>Gummy Report #1</h3><p>Replace this image with your COA thumbnail.</p><div class="miniMeta">Batch: GM-01</div></div> -->
+                </article>
+               
+              </div>
+            </div>
+
+            <!-- FLOWERS -->
+            <div class="panel" role="tabpanel" id="panel-flowers" aria-labelledby="tab-flowers">
+              <div class="carouselControls">
+                <button class="carBtn" type="button" data-carousel="prev" aria-label="Previous report">&#8592;</button>
+                <div class="carHint">Swipe / scroll for more</div>
+                <button class="carBtn" type="button" data-carousel="next" aria-label="Next report">&#8594;</button>
+              </div>
+
+              <div class="grid" data-grid>
+                <article class="coaItem">
+                  <div class="coaItem__media"><span class="coaItem__badge">COA</span><img src="./assets/images/Chillz Flower 1.jpg" alt="Flower COA 1"></div>
+                 
+                <article class="coaItem">
+                  <div class="coaItem__media"><span class="coaItem__badge">COA</span><img src="./assets/images/Chillz Flower 2.jpg" alt="Flower COA 2"></div>
+                 
+                </article>
+                <article class="coaItem">
+                  <div class="coaItem__media"><span class="coaItem__badge">COA</span><img src="./assets/images/Chillz Flower 3.jpg" alt="Flower COA 3"></div>
+                 
+                </article>
+                <!-- <article class="coaItem">
+                  <div class="coaItem__media"><span class="coaItem__badge">COA</span><img src="./assets/images/placeholder.jpg" alt="Flower COA 4"></div>
+                  <div class="coaItem__body"><h3>Flower Report #4</h3><p>Replace this image with your COA thumbnail.</p><div class="miniMeta">Batch: FL-04</div></div>
+                </article>
+                <article class="coaItem">
+                  <div class="coaItem__media"><span class="coaItem__badge">COA</span><img src="./assets/images/placeholder.jpg" alt="Flower COA 5"></div>
+                  <div class="coaItem__body"><h3>Flower Report #5</h3><p>Replace this image with your COA thumbnail.</p><div class="miniMeta">Batch: FL-05</div></div>
+                </article>
+                <article class="coaItem">
+                  <div class="coaItem__media"><span class="coaItem__badge">COA</span><img src="./assets/images/placeholder.jpg" alt="Flower COA 6"></div>
+                  <div class="coaItem__body"><h3>Flower Report #6</h3><p>Replace this image with your COA thumbnail.</p><div class="miniMeta">Batch: FL-06</div></div>
+                </article>
+                <article class="coaItem">
+                  <div class="coaItem__media"><span class="coaItem__badge">COA</span><img src="./assets/images/placeholder.jpg" alt="Flower COA 7"></div>
+                  <div class="coaItem__body"><h3>Flower Report #7</h3><p>Replace this image with your COA thumbnail.</p><div class="miniMeta">Batch: FL-07</div></div>
+                </article>
+                <article class="coaItem">
+                  <div class="coaItem__media"><span class="coaItem__badge">COA</span><img src="./assets/images/placeholder.jpg" alt="Flower COA 8"></div>
+                  <div class="coaItem__body"><h3>Flower Report #8</h3><p>Replace this image with your COA thumbnail.</p><div class="miniMeta">Batch: FL-08</div></div>
+                </article>
+                <article class="coaItem">
+                  <div class="coaItem__media"><span class="coaItem__badge">COA</span><img src="./assets/images/placeholder.jpg" alt="Flower COA 9"></div>
+                  <div class="coaItem__body"><h3>Flower Report #9</h3><p>Replace this image with your COA thumbnail.</p><div class="miniMeta">Batch: FL-09</div></div>
+                </article> -->
+              </div>
+            </div>
+            <div class="panel" role="tabpanel" id="panel-donuts" aria-labelledby="tab-donuts">
+              <div class="carouselControls">
+                <button class="carBtn" type="button" data-carousel="prev" aria-label="Previous report">&#8592;</button>
+                <div class="carHint">Swipe / scroll for more</div>
+                <button class="carBtn" type="button" data-carousel="next" aria-label="Next report">&#8594;</button>
+              </div>
+
+              <div class="grid" data-grid>
+                <article class="coaItem">
+                  <div class="coaItem__media"><span class="coaItem__badge">COA</span><img src="./assets/images/Chillz Hashhole Prerolls copy.jpg.jpeg" alt="Flower COA 1"></div>
+                </article>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Tabs
+    const tabButtons = Array.from(document.querySelectorAll('.tabBtn'));
+    const panels = Array.from(document.querySelectorAll('.panel'));
+
+    function activateTab(btn){
+      tabButtons.forEach(b=>{
+        const selected = b === btn;
+        b.setAttribute('aria-selected', selected ? 'true' : 'false');
+        b.tabIndex = selected ? 0 : -1;
+      });
+
+      panels.forEach(p=>{
+        p.classList.toggle('is-active', p.id === btn.getAttribute('aria-controls'));
+      });
+    }
+
+    tabButtons.forEach(btn=>{
+      btn.addEventListener('click', ()=> activateTab(btn));
+      btn.addEventListener('keydown', (e)=>{
+        const i = tabButtons.indexOf(btn);
+        if(e.key === 'ArrowRight'){
+          e.preventDefault();
+          const next = tabButtons[(i+1) % tabButtons.length];
+          next.focus(); activateTab(next);
+        }
+        if(e.key === 'ArrowLeft'){
+          e.preventDefault();
+          const prev = tabButtons[(i-1 + tabButtons.length) % tabButtons.length];
+          prev.focus(); activateTab(prev);
+        }
+      });
+    });
+
+    // Carousel controls per active tab (mobile)
+    function getActiveGrid(){
+      const activePanel = document.querySelector('.panel.is-active');
+      return activePanel ? activePanel.querySelector('[data-grid]') : null;
+    }
+
+    document.addEventListener('click', (e)=>{
+      const btn = e.target.closest('[data-carousel]');
+      if(!btn) return;
+
+      const grid = getActiveGrid();
+      if(!grid) return;
+
+      const card = grid.querySelector('.coaItem');
+      if(!card) return;
+
+      const gap = 14;
+      const amount = card.getBoundingClientRect().width + gap;
+      const dir = btn.getAttribute('data-carousel');
+      grid.scrollBy({ left: dir === 'next' ? amount : -amount, behavior: 'smooth' });
+    });
+
+    // Mobile toggle hook placeholder
+    const toggle = document.querySelector('.nav__toggle');
+    if(toggle){
+      toggle.addEventListener('click', ()=>{
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+      });
+    }
+  </script>
+
+</body>
+</html>

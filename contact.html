@@ -1,156 +1,396 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Chillz Hemp – Contact</title>
-  <link rel="stylesheet" href="./assets/styles.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | Chillz Hemp</title>
+
+  <style>
+    :root{
+      --bg:#070914;
+      --text:#ffffff;
+
+      --shadow: 0 18px 45px rgba(0,0,0,.35);
+      --radius: 22px;
+
+      --container: min(980px, calc(100% - 40px));
+      --grad: linear-gradient(90deg, rgba(255,79,216,.85), rgba(168,85,247,.85), rgba(79,140,255,.85));
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background: radial-gradient(1200px 800px at 20% -10%, rgba(255,79,216,.28), transparent 60%),
+                  radial-gradient(1100px 900px at 100% 0%, rgba(79,140,255,.22), transparent 55%),
+                  radial-gradient(900px 700px at 70% 90%, rgba(255,122,69,.14), transparent 55%),
+                  var(--bg);
+      overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{width:var(--container);margin-inline:auto}
+
+    /* =========================
+       HERO + NAV (your vibe)
+    ========================== */
+    .hero{position:relative; min-height: 380px;}
+    .hero__bg{position:absolute; inset:0; overflow:hidden;}
+    .hero__bgImg{
+      width:100%; height:100%;
+      object-fit:cover;
+      filter:saturate(1.05) contrast(1.05);
+      transform:scale(1.02);
+    }
+    .hero::after{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        linear-gradient(180deg, rgba(7,9,20,.65) 0%, rgba(7,9,20,.35) 35%, rgba(7,9,20,.85) 100%),
+        radial-gradient(900px 380px at 20% 20%, rgba(255,79,216,.35), transparent 55%),
+        radial-gradient(800px 360px at 80% 10%, rgba(79,140,255,.25), transparent 55%);
+      pointer-events:none;
+    }
+
+    .hero__content{position:relative; z-index:2}
+    .navBar{
+      position:sticky; top:0; z-index:30;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(180deg, rgba(10,12,30,.75), rgba(10,12,30,.35));
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+    .navBar__inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 14px 0;
+      gap:16px;
+    }
+    .brand__logo{height:44px; width:auto; filter: drop-shadow(0 8px 18px rgba(0,0,0,.45));}
+
+    .nav__links{
+      display:flex; gap:22px; align-items:center;
+      font-weight: 800;
+      letter-spacing: .4px;
+      text-transform: uppercase;
+      font-size: 13px;
+      white-space:nowrap;
+    }
+    .nav__links a{
+      opacity:.9;
+      padding:10px 10px;
+      border-radius: 999px;
+      transition: transform .2s ease, background .2s ease, opacity .2s ease;
+    }
+    .nav__links a:hover{
+      background: rgba(255,255,255,.08);
+      transform: translateY(-1px);
+      opacity:1;
+    }
+
+    .nav__toggle{
+      display:none;
+      width:44px; height:44px;
+      border-radius: 12px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+      backdrop-filter: blur(10px);
+      cursor:pointer;
+    }
+    .nav__toggle span{
+      display:block;
+      width:22px; height:2px;
+      background:#fff;
+      margin:5px auto;
+      border-radius:999px;
+      opacity:.9;
+    }
+
+    .hero__angle{
+      position:absolute; left:0; right:0; bottom:-1px;
+      height:70px;
+      background: linear-gradient(90deg, rgba(255,79,216,.95), rgba(168,85,247,.95), rgba(79,140,255,.95));
+      clip-path: polygon(0 45%, 100% 0, 100% 100%, 0 100%);
+      filter: drop-shadow(0 16px 30px rgba(0,0,0,.45));
+      z-index:2;
+    }
+
+    .heroTitleWrap{position:relative; z-index:2; padding: 84px 0 46px;}
+    .heroTitle{width:var(--container); margin-inline:auto; padding-top: 10px;}
+    .kicker{
+      font-weight: 900; letter-spacing: .18em; text-transform: uppercase;
+      color: rgba(255,255,255,.78);
+      font-size: 12px; margin:0 0 10px;
+    }
+    .h1{
+      margin:0;
+      font-size: clamp(32px, 4vw, 54px);
+      line-height:1.05;
+      font-weight: 950;
+      text-shadow: 0 18px 45px rgba(0,0,0,.4);
+    }
+    .sub{
+      margin: 14px 0 0;
+      max-width: 62ch;
+      color: rgba(255,255,255,.82);
+      font-weight: 600;
+      line-height: 1.55;
+    }
+
+    /* =========================
+       CONTACT FORM ONLY
+    ========================== */
+    main{position:relative; z-index:3}
+    .contactWrap{padding: 54px 0 90px;}
+
+    .formShell{
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.16);
+      background: linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+
+    .formHead{
+      padding: 18px 18px 0;
+    }
+    .formHead__inner{
+      padding: 16px 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.14);
+      background:
+        radial-gradient(900px 250px at 10% 30%, rgba(255,79,216,.25), transparent 60%),
+        radial-gradient(700px 220px at 80% 0%, rgba(79,140,255,.22), transparent 55%),
+        rgba(255,255,255,.06);
+    }
+    .formHead__inner h2{
+      margin:0;
+      font-size: 18px;
+      font-weight: 950;
+      letter-spacing:.02em;
+    }
+    .formHead__inner p{
+      margin:6px 0 0;
+      color: rgba(255,255,255,.74);
+      font-weight: 650;
+      font-size: 13px;
+      line-height:1.45;
+      max-width: 70ch;
+    }
+
+    .formBody{
+      padding: 18px;
+    }
+
+    .glassForm{
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 16px 40px rgba(0,0,0,.22);
+      padding: 18px;
+    }
+
+    form{display:grid; gap: 12px;}
+
+    .row{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    label{
+      display:block;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: 11px;
+      opacity:.9;
+      margin: 0 0 8px;
+    }
+
+    .field{
+      width:100%;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.20);
+      color:#fff;
+      padding: 14px 14px;
+      font-size: 14px;
+      font-weight: 650;
+      outline:none;
+      transition: border-color .18s ease, transform .18s ease, background .18s ease;
+    }
+    .field::placeholder{color: rgba(255,255,255,.55)}
+    .field:focus{
+      border-color: rgba(255,255,255,.28);
+      background: rgba(0,0,0,.28);
+      transform: translateY(-1px);
+    }
+    textarea.field{
+      min-height: 160px;
+      resize: vertical;
+    }
+
+    .actions{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      margin-top: 4px;
+      flex-wrap:wrap;
+    }
+
+    .btnPrimary{
+      appearance:none;
+      border:none;
+      cursor:pointer;
+      padding: 14px 18px;
+      border-radius: 999px;
+      background: var(--grad);
+      color:#fff;
+      font-weight: 950;
+      letter-spacing:.08em;
+      text-transform: uppercase;
+      font-size: 12px;
+      box-shadow: 0 16px 40px rgba(0,0,0,.28);
+      transition: transform .18s ease, filter .18s ease;
+      white-space:nowrap;
+    }
+    .btnPrimary:hover{transform: translateY(-2px); filter: brightness(1.05);}
+
+    .finePrint{
+      color: rgba(255,255,255,.70);
+      font-weight: 650;
+      font-size: 12px;
+      line-height:1.5;
+      max-width: 60ch;
+    }
+
+    /* Responsive */
+    @media (max-width: 760px){
+      .nav__links{display:none}
+      .nav__toggle{display:block}
+      .heroTitleWrap{padding: 70px 0 40px;}
+      .row{grid-template-columns: 1fr;}
+      .actions{justify-content:flex-start}
+    }
+    @media (max-width: 420px){
+      .brand__logo{height:40px}
+      .glassForm{padding: 14px;}
+      .formHead, .formBody{padding: 14px;}
+    }
+  </style>
 </head>
 
-<body class="contactPage">
+<body>
 
-  <!-- TOP BAR -->
-  <div class="topbar">
-    <div class="container topbar__inner">
-      <div class="topbar__left">FREE SHIPPING ON ALL U.S. ORDERS OVER $75</div>
-      <div class="topbar__right">NEED HELP? SUPPORT@YOURSTORE.COM</div>
-    </div>
-  </div>
-
-  <!-- GLASS HEADER (same style as products) -->
-  <header class="pHeader">
-    <div class="container pHeader__inner">
-      <a class="pHeader__brand" href="./index.html" aria-label="Go home">
-        <img src="./assets/images/Chillz-Logo-768x368.png" alt="Chillz Logo" />
-      </a>
-
-      <nav class="pHeader__nav" aria-label="Primary navigation">
-        <a href="./index.html">Home</a>
-        <a href="./products.html">Products</a>
-        <a href="./coas.html">Lab Reports</a>
-        <a href="./contact.html" class="is-active">Contact</a>
-      </nav>
-
-      <div class="pHeader__tools">
-        <a class="cPillLink" href="mailto:support@yourstore.com">support@yourstore.com</a>
-
-        <button class="pMenuBtn" id="pMenuBtn" type="button" aria-label="Open menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
+  <header class="hero">
+    <div class="hero__bg">
+      <img class="hero__bgImg" src="./assets/images/Banner 1.jpeg" alt="Hero banner placeholder" />
     </div>
 
-    <!-- mobile drawer -->
-    <div class="pDrawer" id="pDrawer" aria-hidden="true">
-      <div class="pDrawer__panel">
-        <a href="./index.html">Home</a>
-        <a href="./products.html">Products</a>
-        <a href="./coas.html">Lab Reports</a>
-        <a href="./contact.html" class="is-active">Contact</a>
-      </div>
-    </div>
-  </header>
+    <div class="hero__content">
+      <div class="navBar">
+        <div class="container navBar__inner">
 
-  <!-- HERO -->
-  <section class="cHero">
-    <div class="container cHero__inner">
-      <div class="cHero__copy">
-        <div class="cPill">CONTACT</div>
-        <h1 class="cHero__title">Let’s Talk 👋</h1>
-        <p class="cHero__sub">
-          Send a message and our team will get back to you. Clean form, premium UI, mobile-first.
-        </p>
+          <a class="brand" href="./index.html">
+            <img class="brand__logo"
+                 src="./assets/images/Chillz-Logo-768x368.png"
+                 alt="Chillz Logo" />
+          </a>
 
+          <nav class="nav__links" aria-label="Primary">
+            <a href="./products.html">ALL PRODUCTS</a>
        
-      </div>
+            <a href="./contact.html">CONTACT US</a>
+            <a href="./disclaimer.html">Disclaimer</a>
+          </nav>
 
-      <!-- FORM CARD -->
-      <div class="cFormCard">
-        <div class="cFormCard__head">
-          <div class="cFormCard__tag">FAST RESPONSE</div>
-          <div class="cFormCard__title">Send a Message</div>
-          <div class="cFormCard__sub">We’ll reply within 24–48 hours.</div>
-        </div>
-
-        <form class="cForm" action="#" method="post">
-          <div class="cGrid2">
-            <label class="cField">
-              <span>Name</span>
-              <input type="text" name="name" placeholder="Your name" required />
-            </label>
-
-            <label class="cField">
-              <span>Email</span>
-              <input type="email" name="email" placeholder="your@email.com" required />
-            </label>
-          </div>
-
-          <label class="cField">
-            <span>Phone Number</span>
-            <input type="tel" name="phone" placeholder="+1 234 567 890" />
-          </label>
-
-          <label class="cField">
-            <span>Message</span>
-            <textarea name="message" rows="5" placeholder="Tell us what you need..." required></textarea>
-          </label>
-
-          <button class="cSubmit" type="submit">
-            Send Message <span class="cArrow">→</span>
+          <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
           </button>
 
-          <div class="cFinePrint">
-            By sending, you agree to be contacted back via email/phone.
-          </div>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER (reuse yours) -->
-  <footer class="footer">
-    <div class="container footer__grid">
-      <div class="footer__col">
-        <div class="footer__brand">
-          <img class="footer__logo" src="./assets/images/Chillz-Logo-768x368.png" alt="Footer logo" />
         </div>
-        <p class="footer__small">Chillz Hemp Premium Hemp Products Collection</p>
-        <div class="footer__small">Email: support@yourstore.com</div>
-      </div>
-
-      <div class="footer__col">
-        <h5>POLICIES</h5>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms and Conditions</a>
-        <a href="#">Shipping Policy</a>
-        <a href="#">Returns &amp; Refund Policy</a>
-      </div>
-
-      <div class="footer__col">
-        <h5>QUICKLINKS</h5>
-        <a href="./index.html">About Us</a>
-        <a href="./contact.html">Contact Us</a>
-        <a href="./coas.html">Lab Reports</a>
-        <a href="./products.html">All Products</a>
-      </div>
-
-      <div class="footer__col">
-        <h5>Signup</h5>
-        <p class="footer__small">Subscribe to our newsletter for updates.</p>
-        <form class="footer__form" action="#" method="post">
-          <input type="email" name="email" placeholder="Email" required />
-          <button class="btn btn--ghost" type="submit">Sign up</button>
-        </form>
       </div>
     </div>
 
-    <div class="footer__bottom">
-      <div class="container footer__bottomInner">
-        <span>© 2026 All Rights Reserved</span>
+    <div class="heroTitleWrap">
+      <div class="heroTitle">
+        <p class="kicker">Premium Hemp Product</p>
+        <h1 class="h1">Contact Us</h1>
+        <p class="sub">
+          Send us a message and we’ll get back to you.
+        </p>
       </div>
     </div>
-  </footer>
 
-  <script src="./assets/main.js"></script>
+    <div class="hero__angle"></div>
+  </header>
+
+  <main>
+    <section class="contactWrap">
+      <div class="container">
+
+        <div class="formShell">
+          <div class="formHead">
+            <div class="formHead__inner">
+              <h2>Send a Message</h2>
+              <p>Fill out the form below. You can connect it to Formspree / Firebase / PHP whenever you’re ready.</p>
+            </div>
+          </div>
+
+          <div class="formBody">
+            <div class="glassForm">
+              <form action="#" method="post" autocomplete="on">
+                <div class="row">
+                  <div>
+                    <label for="name">Name</label>
+                    <input class="field" id="name" name="name" type="text" placeholder="Your name" required />
+                  </div>
+                  <div>
+                    <label for="phone">Phone</label>
+                    <input class="field" id="phone" name="phone" type="tel" placeholder="(555) 555-5555" />
+                  </div>
+                </div>
+
+                <div>
+                  <label for="email">Email</label>
+                  <input class="field" id="email" name="email" type="email" placeholder="you@email.com" required />
+                </div>
+
+                <div>
+                  <label for="message">Message</label>
+                  <textarea class="field" id="message" name="message" placeholder="How can we help?" required></textarea>
+                </div>
+
+                <div class="actions">
+                  <button class="btnPrimary" type="submit">Send Message</button>
+                  <div class="finePrint">
+                    By submitting, you agree to be contacted back regarding your request.
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Mobile toggle hook placeholder
+    const toggle = document.querySelector('.nav__toggle');
+    if(toggle){
+      toggle.addEventListener('click', ()=>{
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+      });
+    }
+  </script>
+
 </body>
 </html>

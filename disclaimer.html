@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Disclaimer | Chillz Hemp</title>
+
+  <style>
+    :root{
+      --bg:#070914;
+      --text:#ffffff;
+      --container: min(980px, calc(100% - 40px));
+      --shadow: 0 18px 45px rgba(0,0,0,.35);
+      --radius: 22px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background: radial-gradient(1200px 800px at 20% -10%, rgba(255,79,216,.28), transparent 60%),
+                  radial-gradient(1100px 900px at 100% 0%, rgba(79,140,255,.22), transparent 55%),
+                  radial-gradient(900px 700px at 70% 90%, rgba(255,122,69,.14), transparent 55%),
+                  var(--bg);
+      overflow-x:hidden;
+      line-height:1.65;
+    }
+
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{width:var(--container);margin-inline:auto}
+
+    /* =========================
+       HERO + NAV (same layout)
+    ========================== */
+    .hero{position:relative; min-height: 340px;}
+    .hero__bg{position:absolute; inset:0; overflow:hidden;}
+    .hero__bgImg{
+      width:100%; height:100%;
+      object-fit:cover;
+      transform:scale(1.02);
+    }
+    .hero::after{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        linear-gradient(180deg, rgba(7,9,20,.65) 0%, rgba(7,9,20,.35) 35%, rgba(7,9,20,.85) 100%);
+      pointer-events:none;
+    }
+
+    .hero__content{position:relative; z-index:2}
+    .navBar{
+      position:sticky; top:0; z-index:30;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(180deg, rgba(10,12,30,.75), rgba(10,12,30,.35));
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+    .navBar__inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 14px 0;
+    }
+    .brand__logo{height:44px;}
+
+    .nav__links{
+      display:flex; gap:22px;
+      font-weight: 800;
+      letter-spacing: .4px;
+      text-transform: uppercase;
+      font-size: 13px;
+    }
+    .nav__links a{
+      opacity:.9;
+      padding:10px;
+      border-radius: 999px;
+      transition:.2s ease;
+    }
+    .nav__links a:hover{
+      background: rgba(255,255,255,.08);
+      opacity:1;
+    }
+
+    .heroTitleWrap{
+      position:relative;
+      z-index:2;
+      padding: 90px 0 40px;
+    }
+    .heroTitle{
+      width:var(--container);
+      margin-inline:auto;
+    }
+    .kicker{
+      font-weight: 900;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.75);
+      font-size: 12px;
+      margin:0 0 10px;
+    }
+    .h1{
+      margin:0;
+      font-size: clamp(32px, 4vw, 50px);
+      font-weight: 950;
+      text-shadow: 0 18px 45px rgba(0,0,0,.4);
+    }
+
+    /* =========================
+       DISCLAIMER CONTENT
+    ========================== */
+    main{
+      padding: 60px 0 90px;
+      position:relative;
+      z-index:3;
+    }
+
+    .disclaimerCard{
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,.16);
+      background: linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+      box-shadow: var(--shadow);
+      padding: 30px;
+      backdrop-filter: blur(14px);
+    }
+
+    .disclaimerCard h2{
+      margin-top:0;
+      font-size: 22px;
+      font-weight: 950;
+      letter-spacing:.02em;
+    }
+
+    .disclaimerCard p{
+      margin: 16px 0;
+      color: rgba(255,255,255,.85);
+      font-weight: 500;
+      font-size: 15px;
+    }
+
+    @media (max-width: 768px){
+      .nav__links{display:none}
+      .disclaimerCard{padding:20px;}
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero__bg">
+      <img class="hero__bgImg" src="./assets/images/Banner 1.jpeg" alt="Hero banner placeholder" />
+    </div>
+
+    <div class="hero__content">
+      <div class="navBar">
+        <div class="container navBar__inner">
+          <a class="brand" href="./index.html">
+            <img class="brand__logo"
+                 src="./assets/images/Chillz-Logo-768x368.png"
+                 alt="Chillz Logo" />
+          </a>
+
+          <nav class="nav__links">
+         
+            <a href="./coas.html">LAB REPORTS</a>
+            <a href="./contact.html">CONTACT US</a>
+            <a href="./disclaimer.html">Disclaimer</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <div class="heroTitleWrap">
+      <div class="heroTitle">
+        <p class="kicker">Premium Hemp Product</p>
+        <h1 class="h1">Disclaimer</h1>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <main>
+    <div class="container">
+      <div class="disclaimerCard">
+
+        <h2>Legal Disclaimer</h2>
+
+        <p>
+         Use With Caution: These products are intended for use by adults 21 years and older. Do not operate heavy machinery or drive while using these products. 
+Health Advisory: Consult with a healthcare professional before use, especially if you have a medical condition or use prescription medications. A Doctor’s advice should be sought before using this and any supplemental dietary product.
+Pregnancy and Nursing: Do not use if you are pregnant or nursing. The effects on fetal development and nursing infants are unknown.
+Potential Effects: Be aware that delta 8 THC, delta 9 THC, THCP,HHC,and similar cannabinoids may affect heart rate, blood pressure, and intraocular pressure. Individuals with heart, blood pressure, or eye conditions should use these products with caution and consult a healthcare provider before use.
+        </p>
+
+        <p>
+          Federal and State Laws: our Products comply with federal law, containing less than 0.3% Delta 9 THC by dry weight, and are derived from legal hemp. However,  the legality of Delta 8 THC, Delta 9 THC, THCP,HHC, and other cannabinoids can vary by state  and territory. it is the consumer’s responsibility to know the laws in their area.
+Restricted States: Currently we cannot ship to states that have restriction on hemp-derived products, including but not limited to Alaska,Arizona,Colorado,Connecticut,Delaware,Idaho, Lowa,Michigan,Montana,Nevada,New york,North Dakota, Oregon,Rhode Island, Utah, Vermont, and Washington. Check local laws for the most current restrictions.
+Age Verifications: You must be 21 years or older  to purchase  and use these products . Age verification Required  at purchase.
+        </p>
+
+        <p>
+        No Medical Claims: These Statements have not been evaluated by the food and drug Administration. This product is not intended to diagnose, treat, cure and prevent any disease. The information on this site is for education purposes only and should not be considered Medical Advice.
+
+
+        </p>
+
+        <p>
+          Chillz Hemp is not responsible for misuse of products or failure to comply with local regulations.
+          Use responsibly.
+        </p>
+
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>
