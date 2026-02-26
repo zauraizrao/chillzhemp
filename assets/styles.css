@@ -296,7 +296,7 @@ button{ font-family:inherit; }
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 .grid--new{
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 .grid--featured{
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -627,7 +627,8 @@ button{ font-family:inherit; }
 }
 
 .showcard{
-  background: rgba(255,255,255,.78);
+background: #F0D9E4;
+background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 120, 0.82) 100%);
   border: 1px solid rgba(0,0,0,.06);
 }
 .showcard__top{
