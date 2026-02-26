@@ -1358,3 +1358,58 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
     object-fit: cover !important;
   }
 }
+
+
+
+/* =========================================
+   FINAL HERO FIX (Desktop + Mobile Clean)
+   ========================================= */
+
+/* Reset hero so it doesn't force weird heights */
+.hero {
+  min-height: unset !important;
+  height: auto !important;
+  padding: 0 !important;
+}
+
+/* Make background wrapper natural */
+.hero__bg {
+  position: relative !important;
+  height: auto !important;
+  overflow: hidden;
+}
+
+/* DESKTOP: make banner fill nicely */
+@media (min-width: 769px){
+  .hero__bgImg{
+    width: 100%;
+    height: 75vh;             /* clean hero height */
+    object-fit: cover;        /* fills full width */
+    object-position: center;
+    display:block;
+  }
+}
+
+/* MOBILE: make banner strong and clean */
+@media (max-width: 768px){
+
+  .hero__bgImg{
+    width: 100%;
+    height: auto;             /* natural image height */
+    max-height: 420px;        /* makes it visually strong */
+    object-fit: cover;        /* fill screen properly */
+    object-position: center;
+    display:block;
+  }
+
+  /* Remove empty dark block */
+  .hero::after,
+  .hero__bg::after{
+    display:none !important;
+  }
+
+  /* Remove angled stripe under hero on mobile */
+  .hero__angle{
+    display:none !important;
+  }
+}
