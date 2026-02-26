@@ -420,7 +420,7 @@ button{ font-family:inherit; }
 /* ---------- Promo (pink jar row) ---------- */
 .promo__inner{
   display:grid;
-  grid-template-columns: 1.2fr .8fr;
+  grid-template-columns: 0.8fr .8fr;
   align-items:center;
   gap: 28px;
 }
@@ -1570,3 +1570,19 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
     filter: drop-shadow(0 0 4px rgb(255, 255, 255)) invert(1);
 }
 
+
+
+/* DESKTOP: show full banner (no cropping) */
+@media (min-width: 992px) {
+  .hero {
+    height: 100vh;          /* keep full screen */
+  }
+
+  .hero__bgImg {
+    height: 100%;
+    width: 100%;
+    object-fit: contain !important;   /* prevents cutting */
+    object-position: center;
+    background: #000;                 /* fills empty space */
+  }
+}
