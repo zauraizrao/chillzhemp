@@ -1516,3 +1516,57 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
     z-index: 0 !important;
   }
 }
+
+
+
+
+/* =======================
+   BANNER / CAROUSEL
+   ======================= */
+
+.banner-carousel {
+    padding: 0;
+    margin: 0;
+}
+
+.banner-carousel .carousel-item {
+    height: auto;              /* no fixed height – prevents white gap */
+}
+
+.banner-carousel .banner-img {
+    width: 100%;
+    height: auto;              /* keeps aspect ratio */
+    object-fit: cover;
+    display: block;
+}
+/* put this AFTER bootstrap.css */
+#stonerBanner .carousel-indicators button {
+  background-color: #fff !important;
+  opacity: .6;
+  border: 0 !important;
+
+  /* BS sometimes uses borders/gradients that affect color */
+  background-image: none !important;
+  filter: none !important;
+}
+
+#stonerBanner .carousel-indicators button.active {
+  background-color: #fff !important;
+  opacity: 1;
+}
+.banner-carousel .carousel-indicators [data-bs-target] {
+    background-color: #ffffff !important;
+    opacity: 0.6;
+}
+
+.banner-carousel .carousel-indicators .active {
+    background-color: #ffffff !important;
+    opacity: 1;
+}
+
+.banner-carousel .carousel-control-prev-icon,
+.banner-carousel .carousel-control-next-icon {
+    color: #fff;
+    filter: drop-shadow(0 0 4px rgb(255, 255, 255)) invert(1);
+}
+
