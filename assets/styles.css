@@ -1638,164 +1638,78 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
 }
 
 
-/* =========================================
-   PERMA FIX: Mobile carousel swipe + page scroll
-   Paste at END of styles.css
-   ========================================= */
-
+/* =====================================================
+   FINAL PERMANENT FIX (Mobile): Carousels swipe + page scroll
+   Put this at the VERY END of styles.css
+   ===================================================== */
 @media (max-width: 768px){
 
-  /* 0) REMOVE the bad rule effect: don't force pan-x only */
+  /* Keep the page normal */
+  html, body{
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Horizontal scrollers: allow BOTH directions so vertical scroll works
+     even if touch starts on the carousel */
   .showcase__grid,
   .grid--bestsellers,
   .grid--new,
   .grid--featured,
   .promo__imgRow{
-    touch-action: pan-x pan-y !important;   /* allow BOTH directions */
+    display: flex !important;
+    flex-wrap: nowrap !important;
+
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+
     -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+
+    /* ✅ Key line: don’t lock the gesture to horizontal only */
+    touch-action: pan-x pan-y !important;
+
     overscroll-behavior-x: contain;
   }
 
-  /* 1) Ensure these are real horizontal scroll containers */
-  .grid--bestsellers,
-  .grid--new,
-  .grid--featured,
-  .promo__imgRow,
-  .showcase__grid{
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-    scroll-snap-type: x mandatory;
-    gap: 14px;
-    padding: 2px 6px 12px;
-  }
-
-  /* 2) Children should be snap items (keep your sizes) */
-  .grid--bestsellers > .card,
-  .grid--new > .card,
-  .grid--featured > .card,
-  .promo__imgRow > .promo__jar,
-  .showcase__grid > .showcard{
-    scroll-snap-align: start;
-  }
-
-  /* 3) Stop images from capturing drag (this is the BIG one for “won’t swipe”) */
-  .grid--bestsellers img,
-  .grid--new img,
-  .grid--featured img,
-  .promo__imgRow img,
-  .showcase__grid img{
-    pointer-events: none !important;   /* drag goes to the scroller */
-    -webkit-user-drag: none;
-    user-select: none;
-  }
-
-  /* 4) Hide scrollbars cleanly */
-  .grid--bestsellers::-webkit-scrollbar,
-  .grid--new::-webkit-scrollbar,
-  .grid--featured::-webkit-scrollbar,
-  .promo__imgRow::-webkit-scrollbar,
-  .showcase__grid::-webkit-scrollbar{
-    display: none;
-  }
-  .grid--bestsellers,
-  .grid--new,
-  .grid--featured,
-  .promo__imgRow,
-  .showcase__grid{
-    scrollbar-width: none;
-  }
-}
-
-/* =========================================
-   FINAL PERMA FIX: allow vertical scroll while touching carousels
-   (Paste at VERY END)
-   ========================================= */
-@media (max-width: 768px) {
-
-  /* Allow page scroll (pan-y) even when starting touch on carousel */
-  .showcase__grid,
-  .grid--bestsellers,
-  .grid--new,
-  .grid--featured,
-  .promo__imgRow {
-    touch-action: pan-y !important;   /* <-- KEY: vertical scroll works */
-    overscroll-behavior-x: contain;
-  }
-
-  /* Keep horizontal swipe working via overflow scrolling */
-  .showcase__grid,
-  .grid--bestsellers,
-  .grid--new,
-  .grid--featured,
-  .promo__imgRow {
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  /* Prevent images from stealing drag */
-  .showcase__grid img,
-  .grid--bestsellers img,
-  .grid--new img,
-  .grid--featured img,
-  .promo__imgRow img {
-    pointer-events: none !important;
-    -webkit-user-drag: none;
-    user-select: none;
-  }
-}
-
-
-/* =====================================================
-   HARD RESET: Fix all mobile scroll conflicts
-   (Put at VERY END of styles.css)
-   ===================================================== */
-
-@media (max-width: 768px) {
-
-  /* 1) Remove ALL custom touch restrictions */
-  * {
-    touch-action: auto !important;
-  }
-
-  /* 2) Allow normal vertical page scroll */
-  body, html {
-    overflow-x: hidden;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  /* 3) Horizontal carousels (ONLY these scroll sideways) */
-  .showcase__grid,
-  .grid--bestsellers,
-  .grid--new,
-  .grid--featured,
-  .promo__imgRow {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  /* 4) Snap children */
+  /* Snap items */
   .showcase__grid > *,
   .grid--bestsellers > *,
   .grid--new > *,
   .grid--featured > *,
-  .promo__imgRow > * {
+  .promo__imgRow > *{
+    flex: 0 0 auto;
     scroll-snap-align: start;
-    flex-shrink: 0;
   }
 
-  /* 5) Prevent images from stealing drag gesture */
-  img {
+  /* Prevent images inside carousels from stealing the drag gesture
+     (DO NOT do this globally on all images) */
+  .showcase__grid img,
+  .grid--bestsellers img,
+  .grid--new img,
+  .grid--featured img,
+  .promo__imgRow img{
+    pointer-events: none;
     -webkit-user-drag: none;
     user-select: none;
-    pointer-events: none;
   }
 
+  /* Hide scrollbars */
+  .showcase__grid::-webkit-scrollbar,
+  .grid--bestsellers::-webkit-scrollbar,
+  .grid--new::-webkit-scrollbar,
+  .grid--featured::-webkit-scrollbar,
+  .promo__imgRow::-webkit-scrollbar{
+    display: none;
+  }
+  .showcase__grid,
+  .grid--bestsellers,
+  .grid--new,
+  .grid--featured,
+  .promo__imgRow{
+    scrollbar-width: none;
+  }
 }
+
+
+
