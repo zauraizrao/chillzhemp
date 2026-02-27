@@ -1746,3 +1746,56 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
     user-select: none;
   }
 }
+
+
+/* =====================================================
+   HARD RESET: Fix all mobile scroll conflicts
+   (Put at VERY END of styles.css)
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+  /* 1) Remove ALL custom touch restrictions */
+  * {
+    touch-action: auto !important;
+  }
+
+  /* 2) Allow normal vertical page scroll */
+  body, html {
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* 3) Horizontal carousels (ONLY these scroll sideways) */
+  .showcase__grid,
+  .grid--bestsellers,
+  .grid--new,
+  .grid--featured,
+  .promo__imgRow {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* 4) Snap children */
+  .showcase__grid > *,
+  .grid--bestsellers > *,
+  .grid--new > *,
+  .grid--featured > *,
+  .promo__imgRow > * {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+
+  /* 5) Prevent images from stealing drag gesture */
+  img {
+    -webkit-user-drag: none;
+    user-select: none;
+    pointer-events: none;
+  }
+
+}
