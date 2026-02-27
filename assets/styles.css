@@ -1638,78 +1638,7 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
 }
 
 
-/* =====================================================
-   FINAL PERMANENT FIX (Mobile): Carousels swipe + page scroll
-   Put this at the VERY END of styles.css
-   ===================================================== */
-@media (max-width: 768px){
 
-  /* Keep the page normal */
-  html, body{
-    overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  /* Horizontal scrollers: allow BOTH directions so vertical scroll works
-     even if touch starts on the carousel */
-  .showcase__grid,
-  .grid--bestsellers,
-  .grid--new,
-  .grid--featured,
-  .promo__imgRow{
-    display: flex !important;
-    flex-wrap: nowrap !important;
-
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x mandatory;
-
-    /* ✅ Key line: don’t lock the gesture to horizontal only */
-    touch-action: pan-x pan-y !important;
-
-    overscroll-behavior-x: contain;
-  }
-
-  /* Snap items */
-  .showcase__grid > *,
-  .grid--bestsellers > *,
-  .grid--new > *,
-  .grid--featured > *,
-  .promo__imgRow > *{
-    flex: 0 0 auto;
-    scroll-snap-align: start;
-  }
-
-  /* Prevent images inside carousels from stealing the drag gesture
-     (DO NOT do this globally on all images) */
-  .showcase__grid img,
-  .grid--bestsellers img,
-  .grid--new img,
-  .grid--featured img,
-  .promo__imgRow img{
-    pointer-events: none;
-    -webkit-user-drag: none;
-    user-select: none;
-  }
-
-  /* Hide scrollbars */
-  .showcase__grid::-webkit-scrollbar,
-  .grid--bestsellers::-webkit-scrollbar,
-  .grid--new::-webkit-scrollbar,
-  .grid--featured::-webkit-scrollbar,
-  .promo__imgRow::-webkit-scrollbar{
-    display: none;
-  }
-  .showcase__grid,
-  .grid--bestsellers,
-  .grid--new,
-  .grid--featured,
-  .promo__imgRow{
-    scrollbar-width: none;
-  }
-}
 
 
 
