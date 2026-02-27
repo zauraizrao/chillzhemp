@@ -1638,7 +1638,73 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
 }
 
 
+/* =====================================================
+   PERMANENT FIX: Mobile scroll + carousel swipe (NO image break)
+   Put at VERY END of styles.css
+   ===================================================== */
 
+@media (max-width: 768px) {
+
+  /* 1) Undo your global image-killer rule */
+  img {
+    pointer-events: auto !important;     /* <-- bring images back */
+    -webkit-user-drag: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+  }
+
+  /* 2) Carousels: allow vertical scrolling even when finger starts on carousel */
+  .showcase__grid,
+  .grid--bestsellers,
+  .grid--new,
+  .grid--featured,
+  .promo__imgRow {
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch;
+
+    /* KEY: allow page scroll while touching carousel */
+    touch-action: pan-y !important;
+
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+  }
+
+  /* 3) Items should not shrink + keep snap */
+  .showcase__grid > *,
+  .grid--bestsellers > *,
+  .grid--new > *,
+  .grid--featured > *,
+  .promo__imgRow > * {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+
+  /* 4) Remove any earlier rules forcing pan-x (your CSS has a lot) */
+  .showcase__grid *,
+  .grid--bestsellers *,
+  .grid--new *,
+  .grid--featured *,
+  .promo__imgRow * {
+    touch-action: auto !important;
+  }
+
+  /* 5) Hide scrollbars (optional) */
+  .showcase__grid::-webkit-scrollbar,
+  .grid--bestsellers::-webkit-scrollbar,
+  .grid--new::-webkit-scrollbar,
+  .grid--featured::-webkit-scrollbar,
+  .promo__imgRow::-webkit-scrollbar {
+    display: none;
+  }
+  .showcase__grid,
+  .grid--bestsellers,
+  .grid--new,
+  .grid--featured,
+  .promo__imgRow {
+    scrollbar-width: none;
+  }
+}
 
 
 
