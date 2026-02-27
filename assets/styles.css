@@ -1707,3 +1707,42 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
     scrollbar-width: none;
   }
 }
+
+/* =========================================
+   FINAL PERMA FIX: allow vertical scroll while touching carousels
+   (Paste at VERY END)
+   ========================================= */
+@media (max-width: 768px) {
+
+  /* Allow page scroll (pan-y) even when starting touch on carousel */
+  .showcase__grid,
+  .grid--bestsellers,
+  .grid--new,
+  .grid--featured,
+  .promo__imgRow {
+    touch-action: pan-y !important;   /* <-- KEY: vertical scroll works */
+    overscroll-behavior-x: contain;
+  }
+
+  /* Keep horizontal swipe working via overflow scrolling */
+  .showcase__grid,
+  .grid--bestsellers,
+  .grid--new,
+  .grid--featured,
+  .promo__imgRow {
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Prevent images from stealing drag */
+  .showcase__grid img,
+  .grid--bestsellers img,
+  .grid--new img,
+  .grid--featured img,
+  .promo__imgRow img {
+    pointer-events: none !important;
+    -webkit-user-drag: none;
+    user-select: none;
+  }
+}
