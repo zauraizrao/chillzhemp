@@ -140,6 +140,13 @@
       .nav__links{display:none}
       .disclaimerCard{padding:20px;}
     }
+    /* Prevent long strings from overflowing on mobile */
+.disclaimerCard,
+.disclaimerCard p {
+  overflow-wrap: anywhere;   /* best fix */
+  word-break: break-word;   /* fallback */
+  hyphens: auto;
+}
 
   </style>
 </head>

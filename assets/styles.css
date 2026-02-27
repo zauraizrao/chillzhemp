@@ -806,13 +806,20 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
 
 /* tablet */
 @media (max-width: 980px){
-  .grid--bestsellers{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .grid--new{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .grid--featured{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .promo__inner{ grid-template-columns: 1fr; }
-  .feature__inner{ grid-template-columns: 1fr; }
-  .glassFeature__inner{ grid-template-columns: 1fr; }
-  .footer__grid{ grid-template-columns: 1fr 1fr; }
+  .grid--bestsellers{ touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid--new{ touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid--featured{ touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .promo__inner{ touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch; grid-template-columns: 1fr; }
+  .feature__inner{ touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch; grid-template-columns: 1fr; }
+  .glassFeature__inner{ touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch; grid-template-columns: 1fr; }
+  .footer__grid{ touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch; grid-template-columns: 1fr 1fr; }
 }
 
 /* mobile */
@@ -824,14 +831,19 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
 
   .card__imgWrap,
   .bigCard__img,
-  .showcard__media{ min-height: 180px; }
+  .showcard__media{ touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch; min-height: 180px; }
 
-  .showcase__grid{ grid-template-columns: 1fr; }
+  .showcase__grid{ touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch; grid-template-columns: 1fr; }
 
   /* make the candy cards not huge */
-  .showcard{ border-radius: 22px; }
+  .showcard{ touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch; border-radius: 22px; }
 
   .gummies__stripInner{
+    touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch;
     flex-wrap: wrap;
     justify-content:center;
     text-align:center;
@@ -839,6 +851,8 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
 
   /* MOBILE: BEST SELLER becomes swipe carousel (clean) */
   .grid--bestsellers{
+    touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch;
     display:flex;
     flex-wrap:nowrap;
     overflow-x:auto;
@@ -851,33 +865,45 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
     overscroll-behavior-x: contain;
   }
   .grid--bestsellers > .card{
+    touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch;
     flex: 0 0 82%;
     min-width: 82%;
     max-width: 82%;
     scroll-snap-align: start;
   }
-  .grid--bestsellers::-webkit-scrollbar{ display:none; }
-  .grid--bestsellers{ scrollbar-width:none; }
+  .grid--bestsellers::-webkit-scrollbar{ touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch; display:none; }
+  .grid--bestsellers{ touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch; scrollbar-width:none; }
 
   /* promo jar row becomes swipe on mobile */
   .promo__imgRow{
+    touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch;
     overflow-x:auto;
     flex-wrap:nowrap;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     padding-bottom: 12px;
   }
-  .promo__jar{
+  .promo__jar{ 
+    touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch;
     flex: 0 0 72%;
     min-width: 72%;
     max-width: 72%;
     scroll-snap-align:start;
   }
-  .promo__imgRow::-webkit-scrollbar{ display:none; }
-  .promo__imgRow{ scrollbar-width:none; }
+  .promo__imgRow::-webkit-scrollbar{ touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch; display:none; }
+  .promo__imgRow{ touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch; scrollbar-width:none; }
 
   /* NEW section becomes swipe carousel too (less mess) */
   .grid--new{
+    touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch;
     display:flex;
     flex-wrap:nowrap;
     overflow-x:auto;
@@ -888,16 +914,22 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
     -webkit-overflow-scrolling: touch;
   }
   .grid--new > .card{
+    touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch;
     flex: 0 0 82%;
     min-width: 82%;
     max-width: 82%;
     scroll-snap-align:start;
   }
-  .grid--new::-webkit-scrollbar{ display:none; }
-  .grid--new{ scrollbar-width:none; }
+  .grid--new::-webkit-scrollbar{ touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch; display:none; }
+  .grid--new{ touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch; scrollbar-width:none; }
 
   /* featured donuts becomes swipe */
   .grid--featured{
+    touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch;
     display:flex;
     flex-wrap:nowrap;
     overflow-x:auto;
@@ -907,22 +939,30 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
     -webkit-overflow-scrolling: touch;
   }
   .grid--featured > .card{
+    touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch;
     flex: 0 0 82%;
     min-width: 82%;
     max-width: 82%;
     scroll-snap-align:start;
   }
-  .grid--featured::-webkit-scrollbar{ display:none; }
-  .grid--featured{ scrollbar-width:none; }
+  .grid--featured::-webkit-scrollbar{ touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch; display:none; }
+  .grid--featured{ touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch; scrollbar-width:none; }
 
-  .footer__grid{ grid-template-columns: 1fr; }
+  .footer__grid{ touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch; grid-template-columns: 1fr; }
 }
 
 /* super small */
 @media (max-width: 420px){
+  
   .grid--bestsellers > .card,
   .grid--new > .card,
   .grid--featured > .card{
+    touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch;
     flex-basis: 88%;
     min-width: 88%;
     max-width: 88%;
@@ -1106,6 +1146,8 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
 .glassFeature{
   position: relative;
   overflow: hidden;
+  touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Ensure your real content is always above the angled strips */
@@ -1118,6 +1160,8 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
 .glassFeature__inner{
   position: relative;
   z-index: 3;
+  touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch;
 }
 
 /* 2) Angled strips: always behind, never overlap text */
@@ -1419,6 +1463,8 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
 @media (max-width: 768px) {
 
   .showcase__grid {
+    touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch;
     display: flex !important;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
@@ -1428,10 +1474,14 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
   }
 
   .showcase__grid::-webkit-scrollbar {
+    touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch;
     display: none;
   }
 
   .showcard {
+    touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch;
     flex: 0 0 85%;
     scroll-snap-align: center;
   }
@@ -1584,5 +1634,76 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
     object-fit: contain !important;   /* prevents cutting */
     object-position: center;
     background: #000;                 /* fills empty space */
+  }
+}
+
+
+/* =========================================
+   PERMA FIX: Mobile carousel swipe + page scroll
+   Paste at END of styles.css
+   ========================================= */
+
+@media (max-width: 768px){
+
+  /* 0) REMOVE the bad rule effect: don't force pan-x only */
+  .showcase__grid,
+  .grid--bestsellers,
+  .grid--new,
+  .grid--featured,
+  .promo__imgRow{
+    touch-action: pan-x pan-y !important;   /* allow BOTH directions */
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+
+  /* 1) Ensure these are real horizontal scroll containers */
+  .grid--bestsellers,
+  .grid--new,
+  .grid--featured,
+  .promo__imgRow,
+  .showcase__grid{
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory;
+    gap: 14px;
+    padding: 2px 6px 12px;
+  }
+
+  /* 2) Children should be snap items (keep your sizes) */
+  .grid--bestsellers > .card,
+  .grid--new > .card,
+  .grid--featured > .card,
+  .promo__imgRow > .promo__jar,
+  .showcase__grid > .showcard{
+    scroll-snap-align: start;
+  }
+
+  /* 3) Stop images from capturing drag (this is the BIG one for “won’t swipe”) */
+  .grid--bestsellers img,
+  .grid--new img,
+  .grid--featured img,
+  .promo__imgRow img,
+  .showcase__grid img{
+    pointer-events: none !important;   /* drag goes to the scroller */
+    -webkit-user-drag: none;
+    user-select: none;
+  }
+
+  /* 4) Hide scrollbars cleanly */
+  .grid--bestsellers::-webkit-scrollbar,
+  .grid--new::-webkit-scrollbar,
+  .grid--featured::-webkit-scrollbar,
+  .promo__imgRow::-webkit-scrollbar,
+  .showcase__grid::-webkit-scrollbar{
+    display: none;
+  }
+  .grid--bestsellers,
+  .grid--new,
+  .grid--featured,
+  .promo__imgRow,
+  .showcase__grid{
+    scrollbar-width: none;
   }
 }
