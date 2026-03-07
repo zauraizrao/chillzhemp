@@ -416,66 +416,124 @@
   <script src="main.js"></script>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const navBar = document.querySelector(".navBar");
-      const toggle = document.querySelector(".nav__toggle");
-      const links = document.querySelector(".nav__links");
+document.addEventListener("DOMContentLoaded", () => {
+  const navBar = document.querySelector(".navBar");
+  const toggle = document.querySelector(".nav__toggle");
+  const links = document.querySelector(".nav__links");
 
-      if (navBar && toggle && links) {
-        const setOpen = (open) => {
-          navBar.classList.toggle("is-open", open);
-          toggle.setAttribute("aria-expanded", open ? "true" : "false");
-        };
+  if (navBar && toggle && links) {
+    const setOpen = (open) => {
+      navBar.classList.toggle("is-open", open);
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    };
 
-        toggle.addEventListener("click", (e) => {
-          e.stopPropagation();
-          setOpen(!navBar.classList.contains("is-open"));
-        });
+    toggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      setOpen(!navBar.classList.contains("is-open"));
+    });
 
-        links.querySelectorAll("a").forEach((a) => {
-          a.addEventListener("click", () => setOpen(false));
-        });
+    links.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", () => setOpen(false));
+    });
 
-        document.addEventListener("click", (e) => {
-          if (!navBar.contains(e.target)) setOpen(false);
-        });
+    document.addEventListener("click", (e) => {
+      if (!navBar.contains(e.target)) setOpen(false);
+    });
 
-        document.addEventListener("keydown", (e) => {
-          if (e.key === "Escape") setOpen(false);
-        });
-      }
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") setOpen(false);
+    });
+  }
 
-      const getScrollAmount = (track) => {
-        if (!track) return 300;
-        const firstCard =
-          track.querySelector(".card") ||
-          track.querySelector(".showcard") ||
-          track.querySelector(".promo__jar");
+  function getScrollAmount(track) {
+    if (!track) return 300;
 
-        if (!firstCard) return 300;
+    const firstCard =
+      track.querySelector(".card") ||
+      track.querySelector(".showcard") ||
+      track.querySelector(".promo__jar");
 
-        const styles = window.getComputedStyle(track);
-        const gap = parseInt(styles.columnGap || styles.gap || 14, 10) || 14;
+    if (!firstCard) return 300;
 
-        return firstCard.getBoundingClientRect().width + gap;
-      };
+    const styles = window.getComputedStyle(track);
+    const gap = parseInt(styles.gap || styles.columnGap || 14, 10) || 14;
 
-      document.querySelectorAll(".carouselBtn").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const targetId = btn.getAttribute("data-target");
-          const track = document.getElementById(targetId);
-          if (!track) return;
+    return firstCard.getBoundingClientRect().width + gap;
+  }
 
-          const amount = getScrollAmount(track);
-          const isNext = btn.classList.contains("nextBtn");
+  document.querySelectorAll(".carouselBtn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const targetId = btn.getAttribute("data-target");
+      const track = document.getElementById(targetId);
+      if (!track) return;
 
-          track.scrollBy({
-            left: isNext ? amount : -amount,
-            behavior: "smooth"
-          });
-        });
+      const amount = getScrollAmount(track);
+      const isNext = btn.classList.contains("nextBtn");
+
+      track.scrollBy({
+        left: isNext ? amount : -amount,
+        behavior: "smooth"
       });
     });
+  });
+
+  const swipeTracks = [
+    document.getElementById("bestSellerCarousel"),
+    document.getElementById("promoCarousel"),
+    document.getElementById("newArrivalCarousel"),
+    document.getElementById("flowerCarousel"),
+    document.getElementById("featuredCarousel")
+  ].filter(Boolean);
+
+  swipeTracks.forEach((track) => {
+    let startX = 0;
+    let startY = 0;
+    let startScrollLeft = 0;
+    let isDragging = false;
+    let lockDirection = null;
+
+    track.addEventListener("touchstart", (e) => {
+      if (!e.touches || e.touches.length !== 1) return;
+
+      const touch = e.touches[0];
+      startX = touch.clientX;
+      startY = touch.clientY;
+      startScrollLeft = track.scrollLeft;
+      isDragging = true;
+      lockDirection = null;
+    }, { passive: true });
+
+    track.addEventListener("touchmove", (e) => {
+      if (!isDragging || !e.touches || e.touches.length !== 1) return;
+
+      const touch = e.touches[0];
+      const deltaX = touch.clientX - startX;
+      const deltaY = touch.clientY - startY;
+
+      if (!lockDirection) {
+        if (Math.abs(deltaX) > 8 || Math.abs(deltaY) > 8) {
+          lockDirection = Math.abs(deltaX) > Math.abs(deltaY) ? "horizontal" : "vertical";
+        } else {
+          return;
+        }
+      }
+
+      if (lockDirection === "horizontal") {
+        e.preventDefault();
+        track.scrollLeft = startScrollLeft - deltaX;
+      }
+    }, { passive: false });
+
+    const endDrag = () => {
+      isDragging = false;
+      lockDirection = null;
+    };
+
+    track.addEventListener("touchend", endDrag, { passive: true });
+    track.addEventListener("touchcancel", endDrag, { passive: true });
+  });
+});
+
   </script>
 </body>
 </html>
