@@ -62,20 +62,33 @@
   </header>
 
   <!-- BEST SELLER -->
-  <section class="section section--white">
-    <!-- <div data-aos="fade-left"
-     data-aos-anchor="#example-anchor"
-     data-aos-offset="1000"
-     data-aos-duration="1000"  class="container"> -->
-      <h2 data-aos="fade-up"
-     data-aos-anchor-placement="center-bottom" data-aos-duration="1000" class="section__title">BEST SELLER</h2>
-      <p data-aos="fade-up"
-     data-aos-anchor-placement="center-bottom" data-aos-duration="1000" class="section__subtitle">Unlock Everyday Ease with Unique Finds Designed to Elevate Your Routine.</p>
+ <!-- BEST SELLER -->
+<section class="section section--white">
+  <div class="container">
+    <h2 data-aos="fade-up"
+        data-aos-anchor-placement="center-bottom"
+        data-aos-duration="1000"
+        class="section__title">BEST SELLER</h2>
 
-      <div  class="grid grid--bestsellers">
+    <p data-aos="fade-up"
+       data-aos-anchor-placement="center-bottom"
+       data-aos-duration="1000"
+       class="section__subtitle">
+      Unlock Everyday Ease with Unique Finds Designed to Elevate Your Routine.
+    </p>
+
+    <div class="carouselWrap">
+      <div class="carouselControlsRow">
+        <div class="carouselControls">
+          <button class="carouselBtn prevBtn" type="button" aria-label="Previous">‹</button>
+          <button class="carouselBtn nextBtn" type="button" aria-label="Next">›</button>
+        </div>
+      </div>
+
+      <div class="grid grid--bestsellers" id="bestSellerCarousel">
         <!-- Card 1 -->
-        <article  class="card">
-          <div  class="card__imgWrap">
+        <article class="card">
+          <div class="card__imgWrap">
             <img class="card__img" src="./assets/images/gpt 1.png" alt="Product placeholder" />
           </div>
           <h3 class="card__title">THC-A Gummies</h3>
@@ -89,7 +102,7 @@
           <div class="card__imgWrap">
             <img class="card__img" src="./assets/images/gpt 2.png" alt="Product placeholder" />
           </div>
-          <h3 class="card__title">Chillz THC-A Pre Rolls </h3>
+          <h3 class="card__title">Chillz THC-A Pre Rolls</h3>
           <div class="card__meta">
             <span class="price">2x2 Gram Pouch</span>
           </div>
@@ -116,29 +129,12 @@
             <span class="price">75 Count 1000 MG</span>
           </div>
         </article>
-
-        <!-- Row 2 (2 items) -->
-        <!-- <article class="card card--narrow">
-          <div class="card__imgWrap">
-            <img class="card__img" src="./assets/images/Chillz Gummies Jar 02.png" alt="Product placeholder" />
-          </div>
-          <h3 class="card__title">Gummies Jar 75 Count 1000mg</h3>
-          <div class="card__meta"><span class="price">Blueberry</span></div>
-        </article> -->
-
-        <!-- <article class="card card--narrow">
-          <div class="card__imgWrap">
-            <img class="card__img" src="./assets/images/Chillz Gummies Jar 03.png" alt="Product placeholder" />
-          </div>
-          <h3 class="card__title">Gummies Jar 75 Count 1000mg</h3>
-          <div class="card__meta"><span class="price">Cherry Bomb</span></div>
-        </article> -->
       </div>
     </div>
+  </div>
 
-    <div class="angle angle--pink"></div>
-  </section>
-
+  <div class="angle angle--pink"></div>
+</section>
   <!-- PINK PROMO (jar) -->
   <section class="section section--pink promo">
     <div class="container promo__inner">
@@ -557,7 +553,62 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("click", (e) => { if (!navBar.contains(e.target)) setOpen(false); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") setOpen(false); });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const navBar = document.querySelector(".navBar");
+  const toggle = document.querySelector(".nav__toggle");
+  const links = document.querySelector(".nav__links");
+
+  if (navBar && toggle && links) {
+    const setOpen = (open) => {
+      navBar.classList.toggle("is-open", open);
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    };
+
+    toggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      setOpen(!navBar.classList.contains("is-open"));
+    });
+
+    links.querySelectorAll("a").forEach(a =>
+      a.addEventListener("click", () => setOpen(false))
+    );
+
+    document.addEventListener("click", (e) => {
+      if (!navBar.contains(e.target)) setOpen(false);
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") setOpen(false);
+    });
+  }
+
+  const carousel = document.getElementById("bestSellerCarousel");
+  const next = document.querySelector(".nextBtn");
+  const prev = document.querySelector(".prevBtn");
+
+  if (!carousel || !next || !prev) return;
+
+  const getScrollAmount = () => {
+    const firstCard = carousel.querySelector(".card");
+    return firstCard ? firstCard.offsetWidth + 14 : 300;
+  };
+
+  next.addEventListener("click", () => {
+    carousel.scrollBy({
+      left: getScrollAmount(),
+      behavior: "smooth"
+    });
+  });
+
+  prev.addEventListener("click", () => {
+    carousel.scrollBy({
+      left: -getScrollAmount(),
+      behavior: "smooth"
+    });
+  });
+});
+
 </script>
-<script src="carousel-touch-fix.js"></script>
 </body>
 </html>

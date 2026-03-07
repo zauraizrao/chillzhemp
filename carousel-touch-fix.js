@@ -1,12 +1,11 @@
 /* =====================================================
    CAROUSEL TOUCH FIX — carousel-touch-fix.js
-   Add this script at the bottom of your <body> tag:
+   Add ONCE before closing </body>:
    <script src="carousel-touch-fix.js"></script>
    ===================================================== */
 
 (function () {
-  // All carousel selectors
-  const CAROUSEL_SELECTORS = [
+  var SELECTORS = [
     '.grid--bestsellers',
     '.grid--new',
     '.grid--featured',
@@ -14,61 +13,54 @@
     '.promo__imgRow',
   ];
 
-  function initCarousel(el) {
-    let startX = 0;
-    let startY = 0;
-    let isDragging = false;
-    let direction = null; // 'horizontal' | 'vertical' | null
+  function init(el) {
+    var startX, startY, locked;
 
     el.addEventListener('touchstart', function (e) {
-      const touch = e.touches[0];
-      startX = touch.clientX;
-      startY = touch.clientY;
-      isDragging = true;
-      direction = null;
+      var t = e.touches[0];
+      startX = t.clientX;
+      startY = t.clientY;
+      locked = null;
     }, { passive: true });
 
     el.addEventListener('touchmove', function (e) {
-      if (!isDragging) return;
+      if (!e.touches.length) return;
+      var t  = e.touches[0];
+      var dx = t.clientX - startX;
+      var dy = t.clientY - startY;
 
-      const touch = e.touches[0];
-      const deltaX = Math.abs(touch.clientX - startX);
-      const deltaY = Math.abs(touch.clientY - startY);
-
-      // Determine direction only once (first significant movement)
-      if (!direction && (deltaX > 5 || deltaY > 5)) {
-        direction = deltaX > deltaY ? 'horizontal' : 'vertical';
+      if (!locked) {
+        if (Math.abs(dx) < 4 && Math.abs(dy) < 4) return;
+        locked = Math.abs(dx) > Math.abs(dy) ? 'h' : 'v';
       }
 
-      if (direction === 'horizontal') {
-        // Horizontal swipe → scroll carousel, block page scroll
-        e.stopPropagation();
-        // Do NOT call e.preventDefault() here — let the carousel scroll naturally
+      if (locked === 'h') {
+        // Horizontal swipe: block page scroll, let carousel scroll natively
+        e.preventDefault();
+        startX = t.clientX;
+        startY = t.clientY;
       }
-      // Vertical → do nothing, let the event bubble to page naturally
-    }, { passive: true });
+      // Vertical swipe: don't touch the event — page scrolls naturally
+    }, { passive: false });
 
     el.addEventListener('touchend', function () {
-      isDragging = false;
-      direction = null;
+      locked = null;
     }, { passive: true });
   }
 
-  function attachAll() {
-    CAROUSEL_SELECTORS.forEach(function (selector) {
-      document.querySelectorAll(selector).forEach(function (el) {
-        // Avoid double-attaching
-        if (el.dataset.touchFixed) return;
-        el.dataset.touchFixed = '1';
-        initCarousel(el);
+  function attach() {
+    SELECTORS.forEach(function (sel) {
+      document.querySelectorAll(sel).forEach(function (el) {
+        if (el.dataset.tf) return;
+        el.dataset.tf = '1';
+        init(el);
       });
     });
   }
 
-  // Run on DOM ready
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', attachAll);
+    document.addEventListener('DOMContentLoaded', attach);
   } else {
-    attachAll();
+    attach();
   }
 })();

@@ -266,7 +266,7 @@ button{ font-family:inherit; }
     linear-gradient(180deg, #ff2f86 0%, #ff4fae 100%);
 }
 
-/* subtle "glass haze" overlay for colored sections */
+/* subtle “glass haze” overlay for colored sections */
 .section--pink::before,
 .section--purple::before,
 .section--red::before,
@@ -399,7 +399,7 @@ button{ font-family:inherit; }
   color: rgba(255,255,255,.94);
 }
 
-/* ---------- BEST SELLER section: make it "insane" ---------- */
+/* ---------- BEST SELLER section: make it “insane” ---------- */
 .section--white{
   background:
     radial-gradient(900px 520px at 20% 10%, rgba(255,59,141,.10), transparent 60%),
@@ -806,13 +806,20 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
 
 /* tablet */
 @media (max-width: 980px){
-  .grid--bestsellers{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .grid--new{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .grid--featured{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .promo__inner{ grid-template-columns: 1fr; }
-  .feature__inner{ grid-template-columns: 1fr; }
-  .glassFeature__inner{ grid-template-columns: 1fr; }
-  .footer__grid{ grid-template-columns: 1fr 1fr; }
+  .grid--bestsellers{ touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid--new{ touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid--featured{ touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .promo__inner{ touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch; grid-template-columns: 1fr; }
+  .feature__inner{ touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch; grid-template-columns: 1fr; }
+  .glassFeature__inner{ touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch; grid-template-columns: 1fr; }
+  .footer__grid{ touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch; grid-template-columns: 1fr 1fr; }
 }
 
 /* mobile */
@@ -824,14 +831,19 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
 
   .card__imgWrap,
   .bigCard__img,
-  .showcard__media{ min-height: 180px; }
+  .showcard__media{ touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch; min-height: 180px; }
 
-  .showcase__grid{ grid-template-columns: 1fr; }
+  .showcase__grid{ touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch; grid-template-columns: 1fr; }
 
   /* make the candy cards not huge */
-  .showcard{ border-radius: 22px; }
+  .showcard{ touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch; border-radius: 22px; }
 
   .gummies__stripInner{
+    touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch;
     flex-wrap: wrap;
     justify-content:center;
     text-align:center;
@@ -839,6 +851,8 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
 
   /* MOBILE: BEST SELLER becomes swipe carousel (clean) */
   .grid--bestsellers{
+    touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch;
     display:flex;
     flex-wrap:nowrap;
     overflow-x:auto;
@@ -847,44 +861,49 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
     padding: 2px 6px 12px;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    /* KEY FIX: pan-x lets horizontal swipe work,
-       but browser can still pass vertical to the page */
     touch-action: pan-x;
     overscroll-behavior-x: contain;
   }
   .grid--bestsellers > .card{
+    touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch;
     flex: 0 0 82%;
     min-width: 82%;
     max-width: 82%;
     scroll-snap-align: start;
-    /* Cards themselves allow vertical scroll to bubble up */
-    touch-action: pan-y pinch-zoom;
   }
-  .grid--bestsellers::-webkit-scrollbar{ display:none; }
-  .grid--bestsellers{ scrollbar-width:none; }
+  .grid--bestsellers::-webkit-scrollbar{ touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch; display:none; }
+  .grid--bestsellers{ touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch; scrollbar-width:none; }
 
   /* promo jar row becomes swipe on mobile */
   .promo__imgRow{
+    touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch;
     overflow-x:auto;
     flex-wrap:nowrap;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     padding-bottom: 12px;
-    touch-action: pan-x;
-    overscroll-behavior-x: contain;
   }
-  .promo__jar{
+  .promo__jar{ 
+    touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch;
     flex: 0 0 72%;
     min-width: 72%;
     max-width: 72%;
     scroll-snap-align:start;
-    touch-action: pan-y pinch-zoom;
   }
-  .promo__imgRow::-webkit-scrollbar{ display:none; }
-  .promo__imgRow{ scrollbar-width:none; }
+  .promo__imgRow::-webkit-scrollbar{ touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch; display:none; }
+  .promo__imgRow{ touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch; scrollbar-width:none; }
 
   /* NEW section becomes swipe carousel too (less mess) */
   .grid--new{
+    touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch;
     display:flex;
     flex-wrap:nowrap;
     overflow-x:auto;
@@ -893,21 +912,24 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
     padding: 2px 6px 12px;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    touch-action: pan-x;
-    overscroll-behavior-x: contain;
   }
   .grid--new > .card{
+    touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch;
     flex: 0 0 82%;
     min-width: 82%;
     max-width: 82%;
     scroll-snap-align:start;
-    touch-action: pan-y pinch-zoom;
   }
-  .grid--new::-webkit-scrollbar{ display:none; }
-  .grid--new{ scrollbar-width:none; }
+  .grid--new::-webkit-scrollbar{ touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch; display:none; }
+  .grid--new{ touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch; scrollbar-width:none; }
 
   /* featured donuts becomes swipe */
   .grid--featured{
+    touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch;
     display:flex;
     flex-wrap:nowrap;
     overflow-x:auto;
@@ -915,27 +937,32 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
     padding: 2px 6px 12px;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    touch-action: pan-x;
-    overscroll-behavior-x: contain;
   }
   .grid--featured > .card{
+    touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch;
     flex: 0 0 82%;
     min-width: 82%;
     max-width: 82%;
     scroll-snap-align:start;
-    touch-action: pan-y pinch-zoom;
   }
-  .grid--featured::-webkit-scrollbar{ display:none; }
-  .grid--featured{ scrollbar-width:none; }
+  .grid--featured::-webkit-scrollbar{ touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch; display:none; }
+  .grid--featured{ touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch; scrollbar-width:none; }
 
-  .footer__grid{ grid-template-columns: 1fr; }
+  .footer__grid{ touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch; grid-template-columns: 1fr; }
 }
 
 /* super small */
 @media (max-width: 420px){
+  
   .grid--bestsellers > .card,
   .grid--new > .card,
   .grid--featured > .card{
+    touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch;
     flex-basis: 88%;
     min-width: 88%;
     max-width: 88%;
@@ -944,7 +971,8 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
 
 /* ===============================
    PATCH: Fix angled strips + hero banner (DESKTOP + MOBILE)
-   ================================ */
+   Paste at END of styles.css
+================================= */
 
 :root{
   /* nicer seamless gradients for strips */
@@ -962,6 +990,7 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
 .hero{
   position: relative;
   overflow: hidden;
+  /* bigger hero so it doesn't look “short” */
   min-height: clamp(520px, 82vh, 880px);
 }
 
@@ -975,7 +1004,7 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
   width:100%;
   height:100%;
   display:block;
-  object-fit: cover;
+  object-fit: cover;           /* desktop = cinematic */
   object-position: center;
   transform: translateZ(0);
 }
@@ -988,6 +1017,7 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
 }
 
 /* ---------- ANGLED STRIPS: perfect alignment + gradient ---------- */
+/* important: remove gaps between sections */
 .section{
   position: relative;
   overflow: hidden;
@@ -1003,7 +1033,7 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
 /* generic angled divider */
 .angle{
   position: relative;
-  height: 64px;
+  height: 64px;         /* visible strip height */
   pointer-events: none;
   overflow: hidden;
   background: transparent;
@@ -1050,20 +1080,23 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
 /* ---------- MOBILE: banner should be FULL VISIBLE (no crop) ---------- */
 @media (max-width: 768px){
   .hero{
-    min-height: 66vh;
+    min-height: 66vh; /* still tall but not crazy */
   }
 
+  /* Make image fully visible (no cropping) */
   .hero__bgImg{
-    object-fit: contain;
+    object-fit: contain;   /* IMPORTANT: shows full banner */
     object-position: center;
     padding: 14px 10px 10px;
   }
 
+  /* a bit more space for content below nav */
   .hero__content{
     position: relative;
     z-index: 2;
   }
 
+  /* angled strips slightly thinner on mobile */
   .angle{ height: 52px; }
   .angle::before{
     height: 34px;
@@ -1082,7 +1115,7 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
 /* extra-small phones (Infinix etc.) */
 @media (max-width: 420px){
   .hero{
-    min-height: 70vh;
+    min-height: 70vh; /* helps show full banner image + nav */
   }
 
   .hero__bgImg{
@@ -1099,9 +1132,10 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
 
 /* =========================
    PATCH: fix angled lines + hero banner
+   Paste at END of styles.css
 ========================= */
 
-/* 1) Make every section a safe stacking context */
+/* 1) Make every section a safe stacking context so "angle" sits BEHIND content */
 .section,
 .hero,
 .promo,
@@ -1112,6 +1146,8 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
 .glassFeature{
   position: relative;
   overflow: hidden;
+  touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Ensure your real content is always above the angled strips */
@@ -1124,6 +1160,8 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
 .glassFeature__inner{
   position: relative;
   z-index: 3;
+  touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch;
 }
 
 /* 2) Angled strips: always behind, never overlap text */
@@ -1132,20 +1170,22 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
   position: absolute;
   left: -12%;
   right: -12%;
-  height: 84px;
+  height: 84px;                  /* smaller so it doesn't eat content */
   transform: rotate(-2.2deg);
   transform-origin: center;
   pointer-events: none;
-  z-index: 1;
+  z-index: 1;                    /* behind content */
   filter: saturate(1.05);
 }
 
+/* Place the angle at the section bottom (not through the middle) */
 .angle{ bottom: -44px; }
 .hero__angle{ bottom: -44px; }
 
+/* If you have multiple angle blocks stacked, keep spacing so it doesn't collide */
 .section{ padding-block: clamp(48px, 6vw, 86px); }
 
-/* 3) Smooth gradient looks for the angled strips */
+/* 3) Smooth gradient looks for the angled strips (no harsh solid bands) */
 .angle--pink{
   background: linear-gradient(90deg,
     rgba(255, 56, 166, 0.92),
@@ -1170,7 +1210,7 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
   );
 }
 
-/* Optional: soften the edge */
+/* Optional: soften the edge so it blends into the section */
 .angle::after,
 .hero__angle::after{
   content:"";
@@ -1181,9 +1221,10 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
   opacity: .45;
 }
 
-/* 4) HERO banner */
+/* 4) HERO banner: make it taller AND show FULL image (no cropping) */
 .hero__bg{
   width: 100%;
+  /* big enough so it doesn't feel short */
   height: clamp(340px, 48vw, 640px);
   background: radial-gradient(1200px 520px at 50% 20%, rgba(255,56,166,.18), rgba(0,0,0,0) 60%),
               linear-gradient(180deg, rgba(10,12,24,1), rgba(10,12,24,.92));
@@ -1194,24 +1235,27 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: contain;
+  object-fit: contain;        /* IMPORTANT: full visible (no cut) */
   object-position: center;
   background: transparent;
 }
 
+/* If you want slightly less empty space on very wide screens */
 @media (min-width: 1100px){
   .hero__bg{ height: clamp(420px, 36vw, 680px); }
 }
 
+/* Mobile: keep banner fully visible + avoid huge empty space */
 @media (max-width: 640px){
   .hero__bg{
     height: auto;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 16 / 9;     /* keeps it consistent across devices */
   }
   .hero__bgImg{
-    object-fit: contain;
+    object-fit: contain;      /* still no cropping on Infinix etc */
   }
 
+  /* tighten angled strips on mobile so they never cover headings */
   .angle,
   .hero__angle{
     height: 58px;
@@ -1222,7 +1266,7 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
   .section{ padding-block: 44px; }
 }
 
-/* Extra safety padding */
+/* Extra safety: if any text still gets covered in a section, force padding-bottom */
 .section--pink,
 .section--purple,
 .section--yellow{
@@ -1231,6 +1275,7 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
 
 /* =========================================
    MOBILE FIX: HERO/BANNER + TOPBAR + ANGLES
+   Paste at END of styles.css
    ========================================= */
 
 @media (max-width: 768px){
@@ -1268,12 +1313,12 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
   /* 3) Banner: show full image (no cut) */
   .hero__bgImg{
     width: 100%;
-    height: auto !important;
-    max-height: 320px;
-    object-fit: contain !important;
+    height: auto !important;          /* KEY: stop forcing fixed height */
+    max-height: 320px;                /* adjust if you want taller */
+    object-fit: contain !important;   /* FULL visibility */
     object-position: center;
     display: block;
-    background: #000;
+    background: #000;                 /* if image has transparent/edges */
   }
 
   /* 4) Nav area compact */
@@ -1292,6 +1337,16 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
   .nav__toggle{
     transform: scale(.9);
   }
+
+  /* 5) Kill the huge angle under hero on mobile (it causes the ugly blocks) */
+  /* .hero__angle{
+    display: none !important;
+  } */
+
+  /* 6) Also reduce section angles height (those lines you had) */
+  /* .angle{
+    height: 26px !important;
+  } */
 }
 
 
@@ -1299,6 +1354,7 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
    FORCE HERO FULL WIDTH FILL
    =========================== */
 
+/* Remove any container width restriction */
 .hero .container,
 .hero__content .container {
   width: 100% !important;
@@ -1306,12 +1362,14 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
   padding: 0 !important;
 }
 
+/* Make hero full viewport height */
 .hero {
   min-height: 100vh !important;
   height: 100vh !important;
   padding: 0 !important;
 }
 
+/* Remove side backgrounds */
 .hero__bg {
   position: absolute !important;
   inset: 0 !important;
@@ -1319,18 +1377,21 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
   height: 100% !important;
 }
 
+/* THIS is the important line */
 .hero__bgImg {
   width: 100% !important;
   height: 100% !important;
-  object-fit: cover !important;
+  object-fit: cover !important;   /* FILL ENTIRE SCREEN */
   object-position: center center !important;
   display: block;
 }
 
+/* Remove that empty gradient block under image */
 .hero__angle {
   display: none !important;
 }
 
+/* Mobile – still full fill */
 @media (max-width: 768px) {
   .hero {
     height: 100vh !important;
@@ -1343,48 +1404,55 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
 }
 
 
+
 /* =========================================
    FINAL HERO FIX (Desktop + Mobile Clean)
    ========================================= */
 
+/* Reset hero so it doesn't force weird heights */
 .hero {
   min-height: unset !important;
   height: auto !important;
   padding: 0 !important;
 }
 
+/* Make background wrapper natural */
 .hero__bg {
   position: relative !important;
   height: auto !important;
   overflow: hidden;
 }
 
+/* DESKTOP: make banner fill nicely */
 @media (min-width: 769px){
   .hero__bgImg{
     width: 100%;
-    height: 75vh;
-    object-fit: cover;
+    height: 75vh;             /* clean hero height */
+    object-fit: cover;        /* fills full width */
     object-position: center;
     display:block;
   }
 }
 
+/* MOBILE: make banner strong and clean */
 @media (max-width: 768px){
 
   .hero__bgImg{
     width: 100%;
-    height: auto;
-    max-height: 420px;
-    object-fit: cover;
+    height: auto;             /* natural image height */
+    max-height: 420px;        /* makes it visually strong */
+    object-fit: cover;        /* fill screen properly */
     object-position: center;
     display:block;
   }
 
+  /* Remove empty dark block */
   .hero::after,
   .hero__bg::after{
     display:none !important;
   }
 
+  /* Remove angled stripe under hero on mobile */
   .hero__angle{
     display:none !important;
   }
@@ -1395,38 +1463,38 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
 @media (max-width: 768px) {
 
   .showcase__grid {
+    touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch;
     display: flex !important;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     gap: 16px;
     padding-bottom: 10px;
-    /* KEY FIX: horizontal carousel scrolls horizontally,
-       vertical scroll still bubbles up to page */
-    touch-action: pan-x;
-    overscroll-behavior-x: contain;
   }
 
   .showcase__grid::-webkit-scrollbar {
+    touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch;
     display: none;
   }
 
   .showcard {
+    touch-action: pan-y;         /* allow vertical scrolling */
+  -webkit-overflow-scrolling: touch;
     flex: 0 0 85%;
     scroll-snap-align: center;
-    /* Allow vertical scroll to bubble up when swiping on a card */
-    touch-action: pan-y pinch-zoom;
   }
 
 }
 
 /* =========================
    GLOBAL MOBILE CAROUSEL SWIPE FIX
-   THE KEY FIX IS HERE — replaces previous conflicting rules
+   Put this at the VERY END of your CSS
 ========================= */
 @media (max-width: 768px) {
 
-  /* Stop images from blocking swipe */
+  /* 1) Stop images from "dragging" and blocking swipe */
   img {
     -webkit-user-drag: none;
     user-select: none;
@@ -1434,14 +1502,7 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
     -webkit-touch-callout: none;
   }
 
-  /*
-   * CAROUSEL CONTAINERS: touch-action: pan-x
-   *   → horizontal finger drag = scroll carousel
-   *   → vertical finger drag = scroll the page (browser handles it)
-   *
-   * DO NOT use pan-y here — that blocks horizontal swipe.
-   * DO NOT use "none" here — that blocks vertical page scroll.
-   */
+  /* 2) Make horizontal scroll containers prioritize pan-x */
   .showcase__grid,
   .grid--bestsellers,
   .grid--new,
@@ -1451,47 +1512,34 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
     overscroll-behavior-x: contain;
   }
 
-  /*
-   * CARDS INSIDE CAROUSELS: touch-action: pan-y pinch-zoom
-   *   → vertical drag on a card = page scrolls normally
-   *   → horizontal drag on a card = carousel scrolls (parent handles it)
-   */
-  .showcase__grid > .showcard,
-  .grid--bestsellers > .card,
-  .grid--new > .card,
-  .grid--featured > .card,
-  .promo__imgRow > .promo__jar {
-    touch-action: pan-y pinch-zoom;
-  }
-
-  /* Keep image taps/clicks working */
+  /* 3) Prevent accidental image pointer-capture while still allowing taps */
   .showcase__grid img,
   .grid--bestsellers img,
   .grid--new img,
   .grid--featured img,
   .promo__imgRow img {
-    pointer-events: auto;
+    pointer-events: auto; /* keep clicks/taps working */
   }
 }
 
 
 @media (max-width: 900px) {
   .navBar {
-    z-index: 99999;
+    z-index: 99999; /* ensure on top of hero */
   }
 
   .nav__links {
-    z-index: 100000;
+    z-index: 100000; /* ensure dropdown is on top */
   }
 
   .nav__toggle {
     display: block;
     position: relative;
-    z-index: 100001;
+    z-index: 100001; /* button always clickable */
   }
 }
 
-/* === MOBILE: FORCE NAVBAR TO SHOW ON TOP === */
+/* === MOBILE: FORCE NAVBAR TO SHOW ON TOP (PUT AT VERY END) === */
 @media (max-width: 900px) {
   .navBar{
     position: fixed !important;
@@ -1506,10 +1554,12 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
     transform: none !important;
   }
 
+  /* give page space so navbar doesn't cover content */
   body{
     padding-top: 64px;
   }
 
+  /* make sure hero/background can’t sit above navbar */
   .hero,
   .hero__bg,
   .hero__content{
@@ -1518,17 +1568,270 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
 }
 
 
+
+
+/* =======================
+   BANNER / CAROUSEL
+   ======================= */
+
+.banner-carousel {
+    padding: 0;
+    margin: 0;
+}
+
+.banner-carousel .carousel-item {
+    height: auto;              /* no fixed height – prevents white gap */
+}
+
+.banner-carousel .banner-img {
+    width: 100%;
+    height: auto;              /* keeps aspect ratio */
+    object-fit: cover;
+    display: block;
+}
+/* put this AFTER bootstrap.css */
+#stonerBanner .carousel-indicators button {
+  background-color: #fff !important;
+  opacity: .6;
+  border: 0 !important;
+
+  /* BS sometimes uses borders/gradients that affect color */
+  background-image: none !important;
+  filter: none !important;
+}
+
+#stonerBanner .carousel-indicators button.active {
+  background-color: #fff !important;
+  opacity: 1;
+}
+.banner-carousel .carousel-indicators [data-bs-target] {
+    background-color: #ffffff !important;
+    opacity: 0.6;
+}
+
+.banner-carousel .carousel-indicators .active {
+    background-color: #ffffff !important;
+    opacity: 1;
+}
+
+.banner-carousel .carousel-control-prev-icon,
+.banner-carousel .carousel-control-next-icon {
+    color: #fff;
+    filter: drop-shadow(0 0 4px rgb(255, 255, 255)) invert(1);
+}
+
+
+
 /* DESKTOP: show full banner (no cropping) */
 @media (min-width: 992px) {
   .hero {
-    height: 100vh;
+    height: 100vh;          /* keep full screen */
   }
 
   .hero__bgImg {
     height: 100%;
     width: 100%;
-    object-fit: contain !important;
+    object-fit: contain !important;   /* prevents cutting */
     object-position: center;
-    background: #000;
+    background: #000;                 /* fills empty space */
   }
 }
+
+/* MOBILE BUTTON CAROUSEL */
+.carouselWrap{
+  position: relative;
+}
+
+.carouselBtn{
+  position: absolute;
+  top: -40px;
+  right: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 20;
+}
+
+.carouselBtn.prevBtn{
+  right: 40px;
+}
+
+.carouselBtn:hover{
+  background: rgba(0,0,0,0.8);
+}
+
+@media (max-width:768px){
+
+  /* disable swipe scrolling */
+  .grid--bestsellers{
+    overflow-x: hidden !important;
+  }
+
+}
+
+.carouselWrap{
+  position: relative;
+}
+
+.carouselBtn{
+  display: none;
+}
+
+@media (max-width: 768px){
+
+  .carouselWrap{
+    position: relative;
+    margin-top: 10px;
+  }
+
+  .carouselBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: -52px;
+    width: 28px;
+    height: 28px;
+    border: 1px solid rgba(0,0,0,.08);
+    border-radius: 999px;
+    background: rgba(255,255,255,.92);
+    color: #222;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 30;
+    box-shadow: 0 6px 18px rgba(0,0,0,.10);
+    transition: all .2s ease;
+  }
+
+  .carouselBtn:active{
+    transform: scale(.96);
+  }
+
+  .prevBtn{
+    right: 36px;
+  }
+
+  .nextBtn{
+    right: 0;
+  }
+
+  .carouselBtn:hover{
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(0,0,0,.14);
+  }
+
+  #bestSellerCarousel{
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    touch-action: pan-y !important;
+    padding-top: 4px;
+  }
+
+  #bestSellerCarousel::-webkit-scrollbar{
+    display: none;
+  }
+}
+
+.carouselWrap{
+  position: relative;
+}
+
+.carouselControls{
+  display: none;
+}
+
+.carouselBtn{
+  border: 0;
+  outline: none;
+  font-family: inherit;
+}
+
+@media (max-width: 768px){
+
+  .carouselWrap{
+    margin-top: 10px;
+  }
+
+  .carouselControls{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    padding-right: 4px;
+  }
+
+  .carouselBtn{
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1;
+    color: #1a1a1a;
+
+    background: rgba(255, 255, 255, 0.42);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    box-shadow:
+      0 8px 20px rgba(0,0,0,.10),
+      inset 0 1px 0 rgba(255,255,255,.35);
+
+    transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    -webkit-tap-highlight-color: transparent;
+    pointer-events: auto;
+    touch-action: manipulation;
+  }
+
+  .carouselBtn:hover{
+    background: rgba(255,255,255,.52);
+    box-shadow:
+      0 10px 24px rgba(0,0,0,.12),
+      inset 0 1px 0 rgba(255,255,255,.4);
+  }
+
+  .carouselBtn:active{
+    transform: scale(.96);
+  }
+
+  #bestSellerCarousel{
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    touch-action: pan-y !important;
+    overscroll-behavior-x: contain;
+  }
+
+  #bestSellerCarousel::-webkit-scrollbar{
+    display: none;
+  }
+
+  #bestSellerCarousel > .card{
+    flex: 0 0 82%;
+    min-width: 82%;
+    max-width: 82%;
+  }
+
+  .section__subtitle{
+    padding-right: 0 !important;
+  }
+}
+@media (max-width:768px){.grid--bestsellers{display:flex;flex-wrap:nowrap;overflow-x:hidden!important;overflow-y:hidden;gap:14px;padding:2px 6px 12px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;touch-action:pan-y!important;overscroll-behavior-x:contain;scrollbar-width:none}.grid--bestsellers::-webkit-scrollbar{display:none}.grid--bestsellers>.card{flex:0 0 82%;min-width:82%;max-width:82%;scroll-snap-align:start}.bestSellerCarouselWrap,.carouselWrap{position:relative;margin-top:10px}.bestSellerCarouselControlsRow,.carouselControlsRow{display:flex;justify-content:flex-end;width:100%;margin:0 0 14px}.bestSellerCarouselControls,.carouselControls{display:flex;align-items:center;gap:10px}.bestSellerCarouselBtn,.carouselBtn{width:42px;height:42px;border:1px solid rgba(255,255,255,.42);border-radius:999px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:20px;font-weight:700;line-height:1;color:#1a1a1a;background:rgba(255,255,255,.45);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 8px 20px rgba(0,0,0,.10),inset 0 1px 0 rgba(255,255,255,.35);transition:transform .18s ease,box-shadow .18s ease,background .18s ease;-webkit-tap-highlight-color:transparent;touch-action:manipulation;outline:0}.bestSellerCarouselBtn:active,.carouselBtn:active{transform:scale(.96)}.bestSellerCarouselBtn:hover,.carouselBtn:hover{background:rgba(255,255,255,.55);box-shadow:0 10px 24px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.4)}#bestSellerCarousel{overflow-x:hidden!important;overflow-y:hidden!important;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;touch-action:pan-y!important;overscroll-behavior-x:contain}#bestSellerCarousel::-webkit-scrollbar{display:none}.section__subtitle{padding-right:0!important;margin-bottom:14px!important}}
