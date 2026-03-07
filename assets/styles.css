@@ -1835,3 +1835,32 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
   }
 }
 @media (max-width:768px){.grid--bestsellers{display:flex;flex-wrap:nowrap;overflow-x:hidden!important;overflow-y:hidden;gap:14px;padding:2px 6px 12px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;touch-action:pan-y!important;overscroll-behavior-x:contain;scrollbar-width:none}.grid--bestsellers::-webkit-scrollbar{display:none}.grid--bestsellers>.card{flex:0 0 82%;min-width:82%;max-width:82%;scroll-snap-align:start}.bestSellerCarouselWrap,.carouselWrap{position:relative;margin-top:10px}.bestSellerCarouselControlsRow,.carouselControlsRow{display:flex;justify-content:flex-end;width:100%;margin:0 0 14px}.bestSellerCarouselControls,.carouselControls{display:flex;align-items:center;gap:10px}.bestSellerCarouselBtn,.carouselBtn{width:42px;height:42px;border:1px solid rgba(255,255,255,.42);border-radius:999px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:20px;font-weight:700;line-height:1;color:#1a1a1a;background:rgba(255,255,255,.45);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 8px 20px rgba(0,0,0,.10),inset 0 1px 0 rgba(255,255,255,.35);transition:transform .18s ease,box-shadow .18s ease,background .18s ease;-webkit-tap-highlight-color:transparent;touch-action:manipulation;outline:0}.bestSellerCarouselBtn:active,.carouselBtn:active{transform:scale(.96)}.bestSellerCarouselBtn:hover,.carouselBtn:hover{background:rgba(255,255,255,.55);box-shadow:0 10px 24px rgba(0,0,0,.12),inset 0 1px 0 rgba(255,255,255,.4)}#bestSellerCarousel{overflow-x:hidden!important;overflow-y:hidden!important;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;touch-action:pan-y!important;overscroll-behavior-x:contain}#bestSellerCarousel::-webkit-scrollbar{display:none}.section__subtitle{padding-right:0!important;margin-bottom:14px!important}}
+
+@media (max-width:768px){
+
+.carouselWrap{
+  position:relative;
+  padding-top:30px;
+}
+
+.carouselBtn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:absolute;
+  top:0;
+  width:32px;
+  height:32px;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.08);
+  background:rgba(255,255,255,.92);
+  color:#222;
+  font-size:16px;
+  font-weight:700;
+  z-index:20;
+}
+
+.prevBtn{ right:40px; }
+.nextBtn{ right:0; }
+
+}
