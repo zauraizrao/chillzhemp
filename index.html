@@ -69,6 +69,7 @@
         </div>
 
         <div class="grid grid--bestsellers carouselTrack" id="bestSellerCarousel">
+
           <article class="card">
             <div class="card__imgWrap">
               <img class="card__img" src="./assets/images/gpt 1.png" alt="Product placeholder" />
@@ -108,6 +109,11 @@
               <span class="price">75 Count 1000 MG</span>
             </div>
           </article>
+                    <div class="dragScroll" data-for="bestSellerCarousel">
+  <div class="dragScroll__track">
+    <div class="dragScroll__thumb"></div>
+  </div>
+</div>
         </div>
       </div>
     </div>
@@ -532,6 +538,164 @@ document.addEventListener("DOMContentLoaded", () => {
     track.addEventListener("touchend", endDrag, { passive: true });
     track.addEventListener("touchcancel", endDrag, { passive: true });
   });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const navBar = document.querySelector(".navBar");
+  const toggle = document.querySelector(".nav__toggle");
+  const links = document.querySelector(".nav__links");
+
+  if (navBar && toggle && links) {
+    const setOpen = (open) => {
+      navBar.classList.toggle("is-open", open);
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    };
+
+    toggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      setOpen(!navBar.classList.contains("is-open"));
+    });
+
+    links.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", () => setOpen(false));
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!navBar.contains(e.target)) setOpen(false);
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") setOpen(false);
+    });
+  }
+
+  function getScrollAmount(track) {
+    if (!track) return 300;
+
+    const firstCard =
+      track.querySelector(".card") ||
+      track.querySelector(".showcard") ||
+      track.querySelector(".promo__jar");
+
+    if (!firstCard) return 300;
+
+    const styles = window.getComputedStyle(track);
+    const gap = parseInt(styles.gap || styles.columnGap || 14, 10) || 14;
+
+    return firstCard.getBoundingClientRect().width + gap;
+  }
+
+  document.querySelectorAll(".carouselBtn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const targetId = btn.getAttribute("data-target");
+      const track = document.getElementById(targetId);
+      if (!track) return;
+
+      const amount = getScrollAmount(track);
+      const isNext = btn.classList.contains("nextBtn");
+
+      track.scrollBy({
+        left: isNext ? amount : -amount,
+        behavior: "smooth"
+      });
+    });
+  });
+
+  function setupDragScrollbar(wrapper) {
+    const targetId = wrapper.getAttribute("data-for");
+    const carousel = document.getElementById(targetId);
+    const track = wrapper.querySelector(".dragScroll__track");
+    const thumb = wrapper.querySelector(".dragScroll__thumb");
+
+    if (!carousel || !track || !thumb) return;
+
+    let isDragging = false;
+    let startX = 0;
+    let startLeft = 0;
+
+    function updateThumb() {
+      const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+      const trackWidth = track.clientWidth;
+
+      if (maxScroll <= 0) {
+        wrapper.style.display = "none";
+        return;
+      }
+
+      wrapper.style.display = "block";
+
+      const visibleRatio = carousel.clientWidth / carousel.scrollWidth;
+      const thumbWidth = Math.max(trackWidth * visibleRatio, 56);
+      thumb.style.width = thumbWidth + "px";
+
+      const maxThumbLeft = trackWidth - thumbWidth;
+      const scrollRatio = carousel.scrollLeft / maxScroll;
+      thumb.style.left = (maxThumbLeft * scrollRatio) + "px";
+    }
+
+    function pointerDown(clientX) {
+      isDragging = true;
+      startX = clientX;
+      startLeft = parseFloat(thumb.style.left) || 0;
+      thumb.style.cursor = "grabbing";
+    }
+
+    function pointerMove(clientX) {
+      if (!isDragging) return;
+
+      const trackWidth = track.clientWidth;
+      const thumbWidth = thumb.offsetWidth;
+      const maxThumbLeft = trackWidth - thumbWidth;
+      const deltaX = clientX - startX;
+
+      let newLeft = startLeft + deltaX;
+      if (newLeft < 0) newLeft = 0;
+      if (newLeft > maxThumbLeft) newLeft = maxThumbLeft;
+
+      thumb.style.left = newLeft + "px";
+
+      const scrollRatio = maxThumbLeft > 0 ? newLeft / maxThumbLeft : 0;
+      const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+      carousel.scrollLeft = scrollRatio * maxScroll;
+    }
+
+    function pointerUp() {
+      isDragging = false;
+      thumb.style.cursor = "grab";
+    }
+
+    thumb.addEventListener("mousedown", (e) => {
+      e.preventDefault();
+      pointerDown(e.clientX);
+    });
+
+    window.addEventListener("mousemove", (e) => {
+      pointerMove(e.clientX);
+    });
+
+    window.addEventListener("mouseup", pointerUp);
+
+    thumb.addEventListener("touchstart", (e) => {
+      if (!e.touches.length) return;
+      pointerDown(e.touches[0].clientX);
+    }, { passive: true });
+
+    window.addEventListener("touchmove", (e) => {
+      if (!isDragging || !e.touches.length) return;
+      e.preventDefault();
+      pointerMove(e.touches[0].clientX);
+    }, { passive: false });
+
+    window.addEventListener("touchend", pointerUp);
+    window.addEventListener("touchcancel", pointerUp);
+
+    carousel.addEventListener("scroll", updateThumb);
+    window.addEventListener("resize", updateThumb);
+
+    updateThumb();
+  }
+
+  document.querySelectorAll(".dragScroll").forEach(setupDragScrollbar);
 });
 
   </script>
