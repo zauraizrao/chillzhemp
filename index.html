@@ -6,154 +6,140 @@
   <title>Chillz Hemp – Home</title>
   <link rel="stylesheet" href="./assets/styles.css" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </head>
 
 <body>
   <script>
-  AOS.init();
-</script>
-  <!-- TOP THIN BAR -->
-  <!-- <div class="topbar">
-    <div class="container topbar__inner">
-      <div class="topbar__left">SHIPPING All Over US</div>
-      <div class="topbar__right">NEED HELP? SUPPORT@YOURSTORE.COM</div>
-    </div>
-  </div> -->
+    AOS.init();
+  </script>
+
   <!-- HEADER / HERO -->
   <header class="hero">
     <div class="hero__bg">
-      <!-- Replace this src with your banner image -->
       <img class="hero__bgImg" src="./assets/images/Banner main.jpeg" alt="Hero banner placeholder" />
     </div>
 
-   <div class="hero__content">
-  <div class="navBar">
-    <div class="container navBar__inner">
+    <div class="hero__content">
+      <div class="navBar">
+        <div class="container navBar__inner">
+          <a class="brand" href="./index.html">
+            <img class="brand__logo" src="./assets/images/Chillz-Logo-768x368.png" alt="Chillz Logo" />
+          </a>
 
-      <!-- Logo -->
-      <a class="brand" href="./index.html">
-        <img class="brand__logo" 
-             src="./assets/images/Chillz-Logo-768x368.png" 
-             alt="Chillz Logo" />
-      </a>
+          <nav class="nav__links" aria-label="Primary">
+            <a href="./coas.html">LAB REPORTS</a>
+            <a href="./contact.html">CONTACT US</a>
+            <a href="./disclaimer.html">Disclaimer</a>
+          </nav>
 
-      <!-- Desktop Links -->
-      <nav class="nav__links" aria-label="Primary">
-       
-        <a href="./coas.html">LAB REPORTS</a>
-        <a href="./contact.html">CONTACT US</a>
-        <a href="./disclaimer.html">Disclaimer</a>
-      </nav>
-
-      <!-- Mobile Toggle -->
-      <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
+          <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-    <!-- angled red underline like screenshot -->
     <div class="hero__angle"></div>
   </header>
 
   <!-- BEST SELLER -->
- <!-- BEST SELLER -->
-<section class="section section--white">
-  <div class="container">
-    <h2 data-aos="fade-up"
-        data-aos-anchor-placement="center-bottom"
-        data-aos-duration="1000"
-        class="section__title">BEST SELLER</h2>
+  <section class="section section--white">
+    <div class="container">
+      <h2 data-aos="fade-up"
+          data-aos-anchor-placement="center-bottom"
+          data-aos-duration="1000"
+          class="section__title">BEST SELLER</h2>
 
-    <p data-aos="fade-up"
-       data-aos-anchor-placement="center-bottom"
-       data-aos-duration="1000"
-       class="section__subtitle">
-      Unlock Everyday Ease with Unique Finds Designed to Elevate Your Routine.
-    </p>
+      <p data-aos="fade-up"
+         data-aos-anchor-placement="center-bottom"
+         data-aos-duration="1000"
+         class="section__subtitle">
+        Unlock Everyday Ease with Unique Finds Designed to Elevate Your Routine.
+      </p>
 
-    <div class="carouselWrap">
-      <div class="carouselControlsRow">
-        <div class="carouselControls">
-          <button class="carouselBtn prevBtn" type="button" aria-label="Previous">‹</button>
-          <button class="carouselBtn nextBtn" type="button" aria-label="Next">›</button>
+      <div class="carouselWrap">
+        <div class="carouselControlsRow">
+          <div class="carouselControls">
+            <button class="carouselBtn prevBtn" type="button" data-target="bestSellerCarousel" aria-label="Previous">‹</button>
+            <button class="carouselBtn nextBtn" type="button" data-target="bestSellerCarousel" aria-label="Next">›</button>
+          </div>
+        </div>
+
+        <div class="grid grid--bestsellers carouselTrack" id="bestSellerCarousel">
+          <article class="card">
+            <div class="card__imgWrap">
+              <img class="card__img" src="./assets/images/gpt 1.png" alt="Product placeholder" />
+            </div>
+            <h3 class="card__title">THC-A Gummies</h3>
+            <div class="card__meta">
+              <span class="price">1000 MG Fun Pack</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card__imgWrap">
+              <img class="card__img" src="./assets/images/gpt 2.png" alt="Product placeholder" />
+            </div>
+            <h3 class="card__title">Chillz THC-A Pre Rolls</h3>
+            <div class="card__meta">
+              <span class="price">2x2 Gram Pouch</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card__imgWrap">
+              <img class="card__img" src="./assets/images/gpt 7.png" alt="Product placeholder" />
+            </div>
+            <h3 class="card__title">Chillz THC-A Pre Rolls</h3>
+            <div class="card__meta">
+              <span class="price">50 Count 2 Gram</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card__imgWrap">
+              <img class="card__img" src="./assets/images/gpt 8.png" alt="Product placeholder" />
+            </div>
+            <h3 class="card__title">Chillz THC-A Gummies Jar</h3>
+            <div class="card__meta">
+              <span class="price">75 Count 1000 MG</span>
+            </div>
+          </article>
         </div>
       </div>
-
-      <div class="grid grid--bestsellers" id="bestSellerCarousel">
-        <!-- Card 1 -->
-        <article class="card">
-          <div class="card__imgWrap">
-            <img class="card__img" src="./assets/images/gpt 1.png" alt="Product placeholder" />
-          </div>
-          <h3 class="card__title">THC-A Gummies</h3>
-          <div class="card__meta">
-            <span class="price">1000 MG Fun Pack</span>
-          </div>
-        </article>
-
-        <!-- Card 2 -->
-        <article class="card">
-          <div class="card__imgWrap">
-            <img class="card__img" src="./assets/images/gpt 2.png" alt="Product placeholder" />
-          </div>
-          <h3 class="card__title">Chillz THC-A Pre Rolls</h3>
-          <div class="card__meta">
-            <span class="price">2x2 Gram Pouch</span>
-          </div>
-        </article>
-
-        <!-- Card 3 -->
-        <article class="card">
-          <div class="card__imgWrap">
-            <img class="card__img" src="./assets/images/gpt 7.png" alt="Product placeholder" />
-          </div>
-          <h3 class="card__title">Chillz THC-A Pre Rolls</h3>
-          <div class="card__meta">
-            <span class="price">50 Count 2 Gram</span>
-          </div>
-        </article>
-
-        <!-- Card 4 -->
-        <article class="card">
-          <div class="card__imgWrap">
-            <img class="card__img" src="./assets/images/gpt 8.png" alt="Product placeholder" />
-          </div>
-          <h3 class="card__title">Chillz THC-A Gummies Jar</h3>
-          <div class="card__meta">
-            <span class="price">75 Count 1000 MG</span>
-          </div>
-        </article>
-      </div>
     </div>
-  </div>
 
-  <div class="angle angle--pink"></div>
-</section>
-  <!-- PINK PROMO (jar) -->
+    <div class="angle angle--pink"></div>
+  </section>
+
+  <!-- PINK PROMO -->
   <section class="section section--pink promo">
     <div class="container promo__inner">
-      <div data-aos-duration="1200"data-aos="zoom-in-down" class="promo__left">
-        <div class="promo__imgRow">
-          <img class="promo__jar" src="./assets/images/Pre Rolls Boxes 2.png" alt="Jar placeholder" />
-          <img class="promo__jar" src="./assets/images/Pre Roll Boxes Sativa.png" alt="Jar placeholder" />
-          <img class="promo__jar" src="./assets/images/Pre Rolls Boxes 3.png" alt="Jar placeholder" />
-          <!-- <img class="promo__jar" src="./assets/images/Chillz PreRoll Jar Assorted.png" alt="Jar placeholder" /> -->
+      <div data-aos-duration="1200" data-aos="zoom-in-down" class="promo__left">
+        <div class="carouselWrap">
+          <div class="carouselControlsRow">
+            <div class="carouselControls">
+              <button class="carouselBtn prevBtn" type="button" data-target="promoCarousel" aria-label="Previous">‹</button>
+              <button class="carouselBtn nextBtn" type="button" data-target="promoCarousel" aria-label="Next">›</button>
+            </div>
+          </div>
+
+          <div class="promo__imgRow carouselTrack" id="promoCarousel">
+            <img class="promo__jar" src="./assets/images/Pre Rolls Boxes 2.png" alt="Jar placeholder" />
+            <img class="promo__jar" src="./assets/images/Pre Roll Boxes Sativa.png" alt="Jar placeholder" />
+            <img class="promo__jar" src="./assets/images/Pre Rolls Boxes 3.png" alt="Jar placeholder" />
+          </div>
         </div>
       </div>
 
       <div class="promo__right">
-        <!-- <div class="promo__label">Premium Hemp Product</div> -->
         <h3 class="promo__headline">Chillz THC-A PreRolls Jar <br> 24 Count</h3>
         <div class="promo__price">
           <span class="price">PreRolls</span>
         </div>
-        <!-- <a class="btn btn--white" href="#">Explore</a> -->
       </div>
     </div>
 
@@ -164,42 +150,28 @@
   <section class="section section--purple feature">
     <div class="container feature__inner">
       <div class="feature__text">
-        <h3 class="feature__title">Chillz PreRolls <br>50 Count Box
-</h3>
-        <p class="feature__desc">
-          Chillz PreRolls 50 Count Box
-
-        </p>
+        <h3 class="feature__title">Chillz PreRolls <br>50 Count Box</h3>
+        <p class="feature__desc">Chillz PreRolls 50 Count Box</p>
 
         <ul class="bulletList">
           <li>
             <span class="dot"></span>
-            <div>
-              <div class="bulletList__title">Available in 3 Strains
-</div>
-            </div>
+            <div><div class="bulletList__title">Available in 3 Strains</div></div>
           </li>
           <li>
             <span class="dot"></span>
-            <div>
-              <div class="bulletList__title">Hybrid - Indica - Sativa</div>
-            </div>
+            <div><div class="bulletList__title">Hybrid - Indica - Sativa</div></div>
           </li>
-           <li>
+          <li>
             <span class="dot"></span>
-            <div>
-              <div class="bulletList__title">Lab Tested</div>
-            </div>
+            <div><div class="bulletList__title">Lab Tested</div></div>
           </li>
         </ul>
       </div>
 
       <div class="feature__media">
-        <div data-aos-duration="1200"data-aos="zoom-in-down" class="feature__mediaWrap">
-          <img class="feature__img"
-               src="./assets/images/50 ct PreRolls All.png"
-               alt="Feature image placeholder" />
-        
+        <div data-aos-duration="1200" data-aos="zoom-in-down" class="feature__mediaWrap">
+          <img class="feature__img" src="./assets/images/50 ct PreRolls All.png" alt="Feature image placeholder" />
           <span class="pin pin--1" aria-hidden="true"></span>
           <span class="pin pin--2" aria-hidden="true"></span>
           <span class="pin pin--3" aria-hidden="true"></span>
@@ -225,9 +197,9 @@
       <div class="kicker">Hybrid, Indica, Sativa Gummies</div>
       <h3 class="gummies__title">Explore Chillz Gummies Fun Pack</h3>
 
-      <div  class="grid grid--two">
+      <div class="grid grid--two">
         <article data-aos="zoom-in-right" data-aos-duration="1200" class="bigCard">
-          <div  class="bigCard__img">
+          <div class="bigCard__img">
             <img src="./assets/images/Chillz Gummies Fun Pack Box.png" alt="Product placeholder" />
           </div>
           <h4 class="bigCard__title">Chillz Gummies Fun Pack <br> 50 Count 1000mg</h4>
@@ -242,23 +214,6 @@
           <div class="price">Hybrid, Indica, Sativa</div>
         </article>
       </div>
-
-      <!-- <div class="testimonials">
-        <div class="testimonial">
-          <div class="stars">★★★★★</div>
-          <p>
-            I’ve tried my fair share of kombuchas, but none compare to the enchanting symphony of flavors...
-          </p>
-          <div class="quoteBy">— Mia L.</div>
-        </div>
-        <div class="testimonial">
-          <div class="stars">★★★★★</div>
-          <p>
-            What truly sets Bubbly apart is its commitment to quality and authenticity...
-          </p>
-          <div class="quoteBy">— Gabe S.</div>
-        </div>
-      </div> -->
     </div>
   </section>
 
@@ -267,222 +222,172 @@
     <div class="container">
       <h3 class="section__title section__title--small">Explore PreRolls Pouches</h3>
 
-      <div data-aos="zoom-out" data-aos-duration="1500" class="grid grid--new">
-        <article class="card">
-          <div class="card__imgWrap"><img class="card__img" src="./assets/images/gpt 9.png" alt="Product placeholder" /></div>
-          <h3 class="card__title">THC-A PreRolls Pouch </h3>
-          <div class="card__meta"><span class="price">2x2 Gram Hybrid <center style="font-size: 13px;"> <br>12 Pack</center></span></div>
-        </article>
+      <div class="carouselWrap">
+        <div class="carouselControlsRow">
+          <div class="carouselControls">
+            <button class="carouselBtn prevBtn" type="button" data-target="newArrivalCarousel" aria-label="Previous">‹</button>
+            <button class="carouselBtn nextBtn" type="button" data-target="newArrivalCarousel" aria-label="Next">›</button>
+          </div>
+        </div>
 
-        <article class="card">
-          <div class="card__imgWrap"><img class="card__img" src="./assets/images/gpt 10.png" alt="Product placeholder" /></div>
-          <h3 class="card__title">THC-A PreRolls Pouch</h3>
-          <div class="card__meta"><span class="price">2x2 Gram Indica<center style="font-size: 13px;"> <br>12 Pack</center></span></div>
-        </article>
+        <div data-aos="zoom-out" data-aos-duration="1500" class="grid grid--new carouselTrack" id="newArrivalCarousel">
+          <article class="card">
+            <div class="card__imgWrap"><img class="card__img" src="./assets/images/gpt 9.png" alt="Product placeholder" /></div>
+            <h3 class="card__title">THC-A PreRolls Pouch</h3>
+            <div class="card__meta"><span class="price">2x2 Gram Hybrid <center style="font-size: 13px;"><br>12 Pack</center></span></div>
+          </article>
 
-        <article class="card">
-          <div class="card__imgWrap"><img class="card__img" src="./assets/images/gpt 11.png" alt="Product placeholder" /></div>
-          <h3 class="card__title">THC-A PreRolls Pouch</h3>
-          <div class="card__meta"><span class="price">2x2 Gram Sativa <center style="font-size: 13px;"> <br>12 Pack</center></span></div>
-        </article>
+          <article class="card">
+            <div class="card__imgWrap"><img class="card__img" src="./assets/images/gpt 10.png" alt="Product placeholder" /></div>
+            <h3 class="card__title">THC-A PreRolls Pouch</h3>
+            <div class="card__meta"><span class="price">2x2 Gram Indica<center style="font-size: 13px;"><br>12 Pack</center></span></div>
+          </article>
 
-     
+          <article class="card">
+            <div class="card__imgWrap"><img class="card__img" src="./assets/images/gpt 11.png" alt="Product placeholder" /></div>
+            <h3 class="card__title">THC-A PreRolls Pouch</h3>
+            <div class="card__meta"><span class="price">2x2 Gram Sativa <center style="font-size: 13px;"><br>12 Pack</center></span></div>
+          </article>
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- FLOWER PRODUCTS -->
   <section class="showcase">
-  <div class="container">
-    <div class="showcase__head">
-      <div class="showcase__kicker">FEATURED DROPS</div>
-      <h2 class="showcase__title">Chillz Flower Products</h2>
-      <p class="showcase__sub">
-        Explore our Hemp Flower Collection
-      </p>
+    <div class="container">
+      <div class="showcase__head">
+        <div class="showcase__kicker">FEATURED DROPS</div>
+        <h2 class="showcase__title">Chillz Flower Products</h2>
+        <p class="showcase__sub">Explore our Hemp Flower Collection</p>
+      </div>
+
+      <div class="carouselWrap">
+        <div class="carouselControlsRow">
+          <div class="carouselControls">
+            <button class="carouselBtn prevBtn" type="button" data-target="flowerCarousel" aria-label="Previous">‹</button>
+            <button class="carouselBtn nextBtn" type="button" data-target="flowerCarousel" aria-label="Next">›</button>
+          </div>
+        </div>
+
+        <div data-aos="zoom-out-left" data-aos-duration="1500" class="showcase__grid carouselTrack" id="flowerCarousel">
+          <article class="showcard">
+            <div class="showcard__top">
+              <button class="showcard__chip" type="button">THC-A</button>
+            </div>
+
+            <div class="showcard__media">
+              <img class="showcard__img" src="./assets/images/Chillz Flower Jar Indica.png" alt="Product image placeholder" />
+            </div>
+
+            <div class="showcard__body">
+              <h3 class="showcard__title">Chillz THC-A Flower Jar <br>30 count - 1 Gram</h3>
+              <p class="showcard__desc">Indica</p>
+              <div class="showcard__meta"></div>
+            </div>
+          </article>
+
+          <article class="showcard">
+            <div class="showcard__top">
+              <button class="showcard__chip" type="button">THC-A</button>
+            </div>
+
+            <div class="showcard__media">
+              <img class="showcard__img" src="./assets/images/Chillz Flower Jar Hybrid.png" alt="Product image placeholder" />
+            </div>
+
+            <div class="showcard__body">
+              <h3 class="showcard__title">Chillz THC-A Flower Jar <br> 30 count - 1 Gram</h3>
+              <p class="showcard__desc"></p>
+              <div class="showcard__meta">
+                <div style="font-weight: 500;" class="showcard__price">Hybrid</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="showcard">
+            <div class="showcard__top">
+              <button class="showcard__chip" type="button">THC-A</button>
+            </div>
+
+            <div class="showcard__media">
+              <img class="showcard__img" src="./assets/images/Chillz Flower Jar Sativa.png" alt="Product image placeholder" />
+            </div>
+
+            <div class="showcard__body">
+              <h3 class="showcard__title">Chillz THC-A Flower Jar <br> 30 count - 1 Gram</h3>
+              <p class="showcard__desc">Sativa</p>
+              <div class="showcard__meta"></div>
+            </div>
+          </article>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div data-aos="zoom-out-left" data-aos-duration="1500" class="showcase__grid">
-      <!-- Product 1 -->
-      <article class="showcard">
-        <div class="showcard__top">
-          <!-- <span class="showcard__badge">BEST SELLER</span> -->
-          <button class="showcard__chip" type="button">THC-A</button>
-        </div>
-
-        <div class="showcard__media">
-          <!-- Replace src with your image later -->
-          <img class="showcard__img"
-               src="./assets/images/Chillz Flower Jar Indica.png"
-               alt="Product image placeholder" />
-        </div>
-
-        <div class="showcard__body">
-          <h3 class="showcard__title">Chillz THC-A Flower Jar <br>30 count - 1 Gram</h3>
-          <p class="showcard__desc">Indica</p>
-
-          <div class="showcard__meta">
-            <!-- <div class="showcard__price">Gummies</div> -->
-            <!-- <div class="showcard__rating" aria-label="Rated 5 out of 5">
-              ★★★★★ <span>(128)</span>
-            </div> -->
-          </div>
-
-          <!-- <div class="showcard__actions">
-            <a class="showcard__btn showcard__btn--primary" href="#">Shop Now</a>
-            <a class="showcard__btn showcard__btn--ghost" href="#">Details</a>
-          </div> -->
-        </div>
-      </article>
-
-      <!-- Product 2 -->
-    <article class="showcard">
-        <div class="showcard__top">
-          <!-- <span class="showcard__badge">BEST SELLER</span> -->
-          <button class="showcard__chip" type="button">THC-A</button>
-        </div>
-
-        <div class="showcard__media">
-          <!-- Replace src with your image later -->
-          <img class="showcard__img"
-               src="./assets/images/Chillz Flower Jar Hybrid.png"
-               alt="Product image placeholder" />
-        </div>
-
-        <div class="showcard__body">
-          <h3 class="showcard__title">Chillz THC-A Flower Jar <br> 30 count - 1 Gram</h3>
-          <p class="showcard__desc"></p>
-
-          <div class="showcard__meta">
-            <div style="font-weight: 500;" class="showcard__price">Hybrid</div>
-            <!-- <div class="showcard__rating" aria-label="Rated 5 out of 5">
-              ★★★★★ <span>(128)</span>
-            </div> -->
-          </div>
-
-          <!-- <div class="showcard__actions">
-            <a class="showcard__btn showcard__btn--primary" href="#">Shop Now</a>
-            <a class="showcard__btn showcard__btn--ghost" href="#">Details</a>
-          </div> -->
-        </div>
-      </article>
-
-      <!-- Product 3 -->
-     <article class="showcard">
-        <div class="showcard__top">
-          <!-- <span class="showcard__badge">BEST SELLER</span> -->
-          <button class="showcard__chip" type="button">THC-A</button>
-        </div>
-
-        <div class="showcard__media">
-          <!-- Replace src with your image later -->
-          <img class="showcard__img"
-               src="./assets/images/Chillz Flower Jar Sativa.png"
-               alt="Product image placeholder" />
-        </div>
-
-        <div class="showcard__body">
-          <h3 class="showcard__title">Chillz THC-A Flower Jar <br> 30 count - 1 Gram</h3>
-          <p class="showcard__desc">Sativa</p>
-
-          <div class="showcard__meta">
-            <!-- <div class="showcard__price">Sativa</div> -->
-            <!-- <div class="showcard__rating" aria-label="Rated 5 out of 5">
-              ★★★★★ <span>(128)</span>
-            </div> -->
-          </div>
-
-          <!-- <div class="showcard__actions">
-            <a class="showcard__btn showcard__btn--primary" href="#">Shop Now</a>
-            <a class="showcard__btn showcard__btn--ghost" href="#">Details</a>
-          </div> -->
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-  <!-- FEATURED PRODUCTS (RED BLOCK) -->
+  <!-- FEATURED PRODUCTS -->
   <section class="section section--red featured">
-    <div data-aos="fade-down"
-     data-aos-easing="linear"
-     data-aos-duration="1500" class="container">
+    <div data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500" class="container">
       <h3 class="featured__title">Explore Chillz Donuts Collection</h3>
 
-      <div class="grid grid--featured">
-        <article class="card card--onRed">
-          <div class="card__imgWrap"><img class="card__img" src="./assets/images/gpt 6.png" alt="Product placeholder" /></div>
-          <h3 class="card__title">Chillz Donuts <br> 2.3 Gram 20 Count</h3>
-          <div class="card__meta"><span class="price">Assorted</span></div>
-        </article>
+      <div class="carouselWrap">
+        <div class="carouselControlsRow">
+          <div class="carouselControls">
+            <button class="carouselBtn prevBtn" type="button" data-target="featuredCarousel" aria-label="Previous">‹</button>
+            <button class="carouselBtn nextBtn" type="button" data-target="featuredCarousel" aria-label="Next">›</button>
+          </div>
+        </div>
 
-        <article class="card card--onRed">
-          <div class="card__imgWrap"><img class="card__img" src="./assets/images/gpt 3.png" alt="Product placeholder" /></div>
-          <h3 class="card__title">Chillz Donuts <br> 2.3 Gram 20 Count</h3>
-          <div class="card__meta"><span class="price">Hybrid</span></div>
-        </article>
+        <div class="grid grid--featured carouselTrack" id="featuredCarousel">
+          <article class="card card--onRed">
+            <div class="card__imgWrap"><img class="card__img" src="./assets/images/gpt 6.png" alt="Product placeholder" /></div>
+            <h3 class="card__title">Chillz Donuts <br> 2.3 Gram 20 Count</h3>
+            <div class="card__meta"><span class="price">Assorted</span></div>
+          </article>
 
-        <article class="card card--onRed">
-          <div class="card__imgWrap"><img class="card__img" src="./assets/images/gpt 4.png" alt="Product placeholder" /></div>
-          <h3 class="card__title">Chillz Donuts <br> 2.3 Gram 20 Count</h3>
-          <div class="card__meta"><span class="price">Indica</span></div>
-        </article>
+          <article class="card card--onRed">
+            <div class="card__imgWrap"><img class="card__img" src="./assets/images/gpt 3.png" alt="Product placeholder" /></div>
+            <h3 class="card__title">Chillz Donuts <br> 2.3 Gram 20 Count</h3>
+            <div class="card__meta"><span class="price">Hybrid</span></div>
+          </article>
 
-        <article class="card card--onRed">
-          <div class="card__imgWrap"><img class="card__img" src="./assets/images/gpt 5.png" alt="Product placeholder" /></div>
-          <h3 class="card__title">Chillz Donuts <br> 2.3 Gram 20 Count</h3>
-          <div class="card__meta"><span class="price">Sativa</span></div>
-        </article>
+          <article class="card card--onRed">
+            <div class="card__imgWrap"><img class="card__img" src="./assets/images/gpt 4.png" alt="Product placeholder" /></div>
+            <h3 class="card__title">Chillz Donuts <br> 2.3 Gram 20 Count</h3>
+            <div class="card__meta"><span class="price">Indica</span></div>
+          </article>
+
+          <article class="card card--onRed">
+            <div class="card__imgWrap"><img class="card__img" src="./assets/images/gpt 5.png" alt="Product placeholder" /></div>
+            <h3 class="card__title">Chillz Donuts <br> 2.3 Gram 20 Count</h3>
+            <div class="card__meta"><span class="price">Sativa</span></div>
+          </article>
+        </div>
       </div>
-
-   
     </div>
   </section>
+
   <section class="glassFeature">
-  <div class="container glassFeature__inner">
+    <div class="container glassFeature__inner">
+      <div class="glassFeature__copy">
+        <div class="glassFeature__kicker">LIMITED DROP</div>
+        <h2 class="glassFeature__title">Chillz THC-A Gummies Jars</h2>
+        <p class="glassFeature__desc"></p>
 
-    <!-- Left: Copy -->
-    <div class="glassFeature__copy">
-      <div class="glassFeature__kicker">LIMITED DROP</div>
+        <ul class="glassFeature__list">
+          <li><span class="gfDot"></span>Available in 3 Flavours</li>
+          <li><span class="gfDot"></span>75000 MG Per Jar</li>
+          <li><span class="gfDot"></span>1000MG Per Gummy</li>
+        </ul>
+      </div>
 
-      <h2 class="glassFeature__title">
-         Chillz THC-A Gummies Jars
-      </h2>
-
-      <p class="glassFeature__desc">
-      
-      </p>
-
-      <ul class="glassFeature__list">
-        <li><span class="gfDot"></span>Available in 3 Flavours</li>
-        <li><span class="gfDot"></span>75000 MG Per Jar</li>
-        <li><span class="gfDot"></span>1000MG Per Gummy</li>
-      </ul>
-
-      <!-- <div class="glassFeature__actions">
-        <a class="gfBtn gfBtn--primary" href="#">Shop Collection</a>
-        <a class="gfBtn gfBtn--ghost" href="#">Learn More</a>
-      </div> -->
-    </div>
-
-    <!-- Right: Media -->
-    <div class="glassFeature__media">
-      <div class="glassFeature__frame">
-        <!-- Replace this src with your product image -->
-        <img
-          class="glassFeature__img"
-          src="./assets/images/Chillz All Gummies Jar.png"
-          alt="Hero product image placeholder"
-        />
-
-        <!-- little floating tag -->
-        <!-- <div class="glassFeature__tag">
-          <div class="glassFeature__tagTitle">Best Value</div>
-          <div class="glassFeature__tagSub">Bundle pricing inside</div>
-        </div> -->
+      <div class="glassFeature__media">
+        <div class="glassFeature__frame">
+          <img class="glassFeature__img" src="./assets/images/Chillz All Gummies Jar.png" alt="Hero product image placeholder" />
+        </div>
       </div>
     </div>
-
-  </div>
-</section>
+  </section>
 
   <!-- FOOTER -->
   <footer class="footer">
@@ -491,35 +396,14 @@
         <div class="footer__brand">
           <img class="footer__logo" src="./assets/images/Chillz-Logo-768x368.png" alt="Footer logo placeholder" />
         </div>
-        <p class="footer__small">
-          Chillz Hemp Premium Products
-        </p>
-        <!-- <div class="footer__small">Email: support@yourstore.com</div> -->
+        <p class="footer__small">Chillz Hemp Premium Products</p>
       </div>
-
-      <!-- <div class="footer__col">
-        <h5>POLICIES</h5>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms and Conditions</a>
-        <a href="#">Shipping Policy</a>
-        <a href="#">Returns &amp; Refund Policy</a>
-      </div> -->
 
       <div class="footer__col">
         <h5>QUICKLINKS</h5>
         <a href="./contact.html">Contact Us</a>
         <a href="./coas.html">Lab Reports</a>
-
       </div>
-
-      <!-- <div class="footer__col">
-        <h5>Signup</h5>
-        <p class="footer__small">Subscribe to our newsletter for updates.</p>
-        <form class="footer__form" action="#" method="post">
-          <input type="email" name="email" placeholder="Email" required />
-          <button class="btn btn--ghost" type="submit">Sign up</button>
-        </form>
-      </div> -->
     </div>
 
     <div class="footer__bottom">
@@ -531,84 +415,67 @@
 
   <script src="main.js"></script>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const navBar = document.querySelector(".navBar");
-  const toggle = document.querySelector(".nav__toggle");
-  const links = document.querySelector(".nav__links");
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const navBar = document.querySelector(".navBar");
+      const toggle = document.querySelector(".nav__toggle");
+      const links = document.querySelector(".nav__links");
 
-  if (!navBar || !toggle || !links) return;
+      if (navBar && toggle && links) {
+        const setOpen = (open) => {
+          navBar.classList.toggle("is-open", open);
+          toggle.setAttribute("aria-expanded", open ? "true" : "false");
+        };
 
-  const setOpen = (open) => {
-    navBar.classList.toggle("is-open", open);
-    toggle.setAttribute("aria-expanded", open ? "true" : "false");
-  };
+        toggle.addEventListener("click", (e) => {
+          e.stopPropagation();
+          setOpen(!navBar.classList.contains("is-open"));
+        });
 
-  toggle.addEventListener("click", (e) => {
-    e.stopPropagation();
-    setOpen(!navBar.classList.contains("is-open"));
-  });
+        links.querySelectorAll("a").forEach((a) => {
+          a.addEventListener("click", () => setOpen(false));
+        });
 
-  links.querySelectorAll("a").forEach(a => a.addEventListener("click", () => setOpen(false)));
-  document.addEventListener("click", (e) => { if (!navBar.contains(e.target)) setOpen(false); });
-  document.addEventListener("keydown", (e) => { if (e.key === "Escape") setOpen(false); });
-});
+        document.addEventListener("click", (e) => {
+          if (!navBar.contains(e.target)) setOpen(false);
+        });
 
-document.addEventListener("DOMContentLoaded", () => {
-  const navBar = document.querySelector(".navBar");
-  const toggle = document.querySelector(".nav__toggle");
-  const links = document.querySelector(".nav__links");
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") setOpen(false);
+        });
+      }
 
-  if (navBar && toggle && links) {
-    const setOpen = (open) => {
-      navBar.classList.toggle("is-open", open);
-      toggle.setAttribute("aria-expanded", open ? "true" : "false");
-    };
+      const getScrollAmount = (track) => {
+        if (!track) return 300;
+        const firstCard =
+          track.querySelector(".card") ||
+          track.querySelector(".showcard") ||
+          track.querySelector(".promo__jar");
 
-    toggle.addEventListener("click", (e) => {
-      e.stopPropagation();
-      setOpen(!navBar.classList.contains("is-open"));
+        if (!firstCard) return 300;
+
+        const styles = window.getComputedStyle(track);
+        const gap = parseInt(styles.columnGap || styles.gap || 14, 10) || 14;
+
+        return firstCard.getBoundingClientRect().width + gap;
+      };
+
+      document.querySelectorAll(".carouselBtn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const targetId = btn.getAttribute("data-target");
+          const track = document.getElementById(targetId);
+          if (!track) return;
+
+          const amount = getScrollAmount(track);
+          const isNext = btn.classList.contains("nextBtn");
+
+          track.scrollBy({
+            left: isNext ? amount : -amount,
+            behavior: "smooth"
+          });
+        });
+      });
     });
-
-    links.querySelectorAll("a").forEach(a =>
-      a.addEventListener("click", () => setOpen(false))
-    );
-
-    document.addEventListener("click", (e) => {
-      if (!navBar.contains(e.target)) setOpen(false);
-    });
-
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") setOpen(false);
-    });
-  }
-
-  const carousel = document.getElementById("bestSellerCarousel");
-  const next = document.querySelector(".nextBtn");
-  const prev = document.querySelector(".prevBtn");
-
-  if (!carousel || !next || !prev) return;
-
-  const getScrollAmount = () => {
-    const firstCard = carousel.querySelector(".card");
-    return firstCard ? firstCard.offsetWidth + 14 : 300;
-  };
-
-  next.addEventListener("click", () => {
-    carousel.scrollBy({
-      left: getScrollAmount(),
-      behavior: "smooth"
-    });
-  });
-
-  prev.addEventListener("click", () => {
-    carousel.scrollBy({
-      left: -getScrollAmount(),
-      behavior: "smooth"
-    });
-  });
-});
-
-</script>
+  </script>
 </body>
 </html>

@@ -861,7 +861,7 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
     padding: 2px 6px 12px;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    touch-action: pan-x;
+   touch-action: pan-x pan-y;
     overscroll-behavior-x: contain;
   }
   .grid--bestsellers > .card{
@@ -1508,7 +1508,7 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
   .grid--new,
   .grid--featured,
   .promo__imgRow {
-    touch-action: pan-x;
+    touch-action: pan-x pan-y;
     overscroll-behavior-x: contain;
   }
 
@@ -1863,4 +1863,137 @@ background: linear-gradient(212deg, rgba(240, 217, 228, 1) 0%, rgba(216, 112, 12
 .prevBtn{ right:40px; }
 .nextBtn{ right:0; }
 
+}
+
+/* === CAROUSEL UI PATCH === */
+.carouselWrap{position:relative}
+.carouselControlsRow{display:none}
+.carouselControls{display:flex;gap:10px}
+.carouselBtn{
+  border:0;
+  outline:0;
+  font-family:inherit;
+  -webkit-tap-highlight-color:transparent;
+}
+
+@media (max-width:768px){
+  .carouselControlsRow{
+    display:flex !important;
+    justify-content:flex-end;
+    width:100%;
+    margin:0 0 14px 0;
+  }
+
+  .carouselControls{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+
+  .carouselBtn{
+    display:inline-flex !important;
+    align-items:center;
+    justify-content:center;
+    width:42px;
+    height:42px;
+    border-radius:999px;
+    cursor:pointer;
+    font-size:20px;
+    font-weight:700;
+    line-height:1;
+    color:#1a1a1a;
+    background:rgba(255,255,255,.45);
+    border:1px solid rgba(255,255,255,.42);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    box-shadow:0 8px 20px rgba(0,0,0,.10), inset 0 1px 0 rgba(255,255,255,.35);
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+    position:static !important;
+  }
+
+  .carouselBtn:hover{
+    background:rgba(255,255,255,.55);
+    box-shadow:0 10px 24px rgba(0,0,0,.12), inset 0 1px 0 rgba(255,255,255,.4);
+  }
+
+  .carouselBtn:active{transform:scale(.96)}
+
+  .section__subtitle{
+    padding-right:0 !important;
+    margin-bottom:14px !important;
+  }
+}
+
+/* === MOBILE CAROUSEL BEHAVIOR PATCH === */
+@media (max-width:768px){
+  .grid--bestsellers,
+  .grid--new,
+  .grid--featured,
+  .showcase__grid,
+  .promo__imgRow,
+  .carouselTrack{
+    display:flex !important;
+    flex-wrap:nowrap !important;
+    overflow-x:auto !important;
+    overflow-y:hidden !important;
+    gap:14px;
+    padding:2px 6px 12px;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    overscroll-behavior-x:contain;
+    scrollbar-width:none;
+    touch-action:pan-x pan-y !important;
+  }
+
+  .grid--bestsellers::-webkit-scrollbar,
+  .grid--new::-webkit-scrollbar,
+  .grid--featured::-webkit-scrollbar,
+  .showcase__grid::-webkit-scrollbar,
+  .promo__imgRow::-webkit-scrollbar,
+  .carouselTrack::-webkit-scrollbar{
+    display:none;
+  }
+
+  .grid--bestsellers > .card,
+  .grid--new > .card,
+  .grid--featured > .card{
+    flex:0 0 82%;
+    min-width:82%;
+    max-width:82%;
+    scroll-snap-align:start;
+  }
+
+  .showcase__grid > .showcard{
+    flex:0 0 85%;
+    min-width:85%;
+    max-width:85%;
+    scroll-snap-align:start;
+  }
+
+  .promo__imgRow > .promo__jar{
+    flex:0 0 72%;
+    min-width:72%;
+    max-width:72%;
+    scroll-snap-align:start;
+  }
+
+  .grid--bestsellers img,
+  .grid--new img,
+  .grid--featured img,
+  .showcase__grid img,
+  .promo__imgRow img,
+  .carouselTrack img{
+    -webkit-user-drag:none;
+    user-select:none;
+    -webkit-user-select:none;
+    -webkit-touch-callout:none;
+    pointer-events:none;
+  }
+}
+
+/* === OVERRIDE OLD CONFLICTING BUTTON RULES === */
+.carouselBtn.prevBtn,
+.carouselBtn.nextBtn{
+  right:auto !important;
+  top:auto !important;
 }
