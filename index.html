@@ -74,7 +74,7 @@
                 <button
                   class="carouselBtn prevBtn"
                   type="button"
-                  data-target="promoCarousel"
+                  data-target="promoCarousel2"
                   aria-label="Previous"
                 >
                   ‹
@@ -82,7 +82,7 @@
                 <button
                   class="carouselBtn nextBtn"
                   type="button"
-                  data-target="promoCarousel"
+                  data-target="promoCarousel2"
                   aria-label="Next"
                 >
                   ›
@@ -90,7 +90,7 @@
               </div>
             </div>
 
-            <div class="promo__imgRow carouselTrack" id="promoCarousel">
+            <div class="promo__imgRow carouselTrack" id="promoCarousel2">
               <img
                 class="promo__jar"
                 src="./assets/images/Chillz PreRoll Jar 01.png"
@@ -140,7 +140,7 @@
               <button
                 class="carouselBtn prevBtn"
                 type="button"
-                data-target="newArrivalCarousel"
+                data-target="newArrivalCarousel2"
                 aria-label="Previous"
               >
                 ‹
@@ -148,7 +148,7 @@
               <button
                 class="carouselBtn nextBtn"
                 type="button"
-                data-target="newArrivalCarousel"
+                data-target="newArrivalCarousel2"
                 aria-label="Next"
               >
                 ›
@@ -160,7 +160,7 @@
             data-aos="zoom-out"
             data-aos-duration="1500"
             class="grid grid--new carouselTrack"
-            id="newArrivalCarousel"
+            id="newArrivalCarousel2"
           >
             <article class="card">
               <div class="card__imgWrap">
@@ -244,7 +244,7 @@
               <button
                 class="carouselBtn prevBtn"
                 type="button"
-                data-target="bestSellerCarousel"
+                data-target="bestSellerCarousel2"
                 aria-label="Previous"
               >
                 ‹
@@ -252,7 +252,7 @@
               <button
                 class="carouselBtn nextBtn"
                 type="button"
-                data-target="bestSellerCarousel"
+                data-target="bestSellerCarousel2"
                 aria-label="Next"
               >
                 ›
@@ -262,7 +262,7 @@
 
           <div
             class="grid grid--bestsellers carouselTrack"
-            id="bestSellerCarousel"
+            id="bestSellerCarousel2"
           >
             <article class="card">
               <div class="card__imgWrap">
@@ -1033,8 +1033,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const swipeTracks = [
     document.getElementById("bestSellerCarousel"),
+    document.getElementById("bestSellerCarousel2"),
     document.getElementById("promoCarousel"),
+    document.getElementById("promoCarousel2"),
     document.getElementById("newArrivalCarousel"),
+    document.getElementById("newArrivalCarousel2"),
     document.getElementById("flowerCarousel"),
     document.getElementById("featuredCarousel")
   ].filter(Boolean);
@@ -1183,7 +1186,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll(".dragScroll").forEach(setupDragScrollbar);
 });
-
-    </script>
+</script>
   </body>
 </html>
