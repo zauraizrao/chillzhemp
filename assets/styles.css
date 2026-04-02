@@ -420,7 +420,7 @@ button{ font-family:inherit; }
 /* ---------- Promo (pink jar row) ---------- */
 .promo__inner{
   display:grid;
-  grid-template-columns: 0.8fr .8fr;
+  grid-template-columns: 1.7fr 1fr;
   align-items:center;
   gap: 28px;
 }
